@@ -107,7 +107,7 @@ export const translations = {
       vienna: 'Vienna',
       discover: 'Discover',
       quote: '"A tone of pure amber and an interpretive depth that transcends her years."',
-      quoteAuthor: '— The Vienna Courier',
+      quoteAuthor: '— -Univ. Prof. Mag. Lilia Schulz-Bayrova',
       listenRecordings: 'Listen to Recordings'
     },
     biography: {
