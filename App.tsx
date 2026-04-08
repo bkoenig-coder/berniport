@@ -287,7 +287,7 @@ const AWARDS_AND_PRESS = [
     title: 'Leistungsstipendium der MUK',
     description: 'Gewann ein Leistungsstipendium der Musik und Kunst Privatuniversität der Stadt Wien in Höhe von 1500€',
     fullDescription: 'Gewann ein Leistungsstipendium der Musik und Kunst Privatuniversität der Stadt Wien in Höhe von 1500€',
-    image: 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=800&auto=format&fit=crop',
+    image: 'https://st.perplexity.ai/estatic/0b226c450798410ac541646c86ec31afd840e5beab817a5d84fa821e7db61981ec84c3b4a3f072a7a2e1899c9fb06c6e5653d035f9b0ed0eb10048dacf341a237464cf2b436326716bf37ee4f0e20be811212be510a13ef06525d0e5c5ccc8c1',
     type: 'award'
   },
   {
@@ -296,7 +296,7 @@ const AWARDS_AND_PRESS = [
     title: 'Erasmus+ Stipendium in Deutschland',
     description: 'Gewann ein Stipendium an der Folkwang Universität der Künste in Essen bei Prof. Christoph Richter.',
     fullDescription: 'Gewann ein Stipendium an der Folkwang Universität der Künste in Essen bei Prof. Christoph Richter.',
-    image: 'https://images.unsplash.com/photo-1569231175150-118ace14caed?q=80&w=800&auto=format&fit=crop',
+    image: 'https://d2u1z1lopyfwlx.cloudfront.net/thumbnails/a6a5150c-3d46-5c3a-b08d-d3b30f75b45c/4c7e917e-3b3f-507a-b6d0-d2190705d1bc.jpg',
     type: 'award'
   },
   {
@@ -305,7 +305,7 @@ const AWARDS_AND_PRESS = [
     title: 'Bundeswettbewerb Prima La Musica',
     description: 'Gewann den 2. Preis mit 85,80 Punkten, der Wertungskategorie Violoncello IIIplus',
     fullDescription: 'Gewann den 2. Preis mit 85,80 Punkten, der Wertungskategorie Violoncello IIIplus',
-    image: 'https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?q=80&w=800&auto=format&fit=crop',
+    image: 'https://musikderjugend.at/fileadmin/daten/allgemein/Logos_Musik_der_Jugend.svg',
     type: 'award'
   },
   {
@@ -314,7 +314,7 @@ const AWARDS_AND_PRESS = [
     title: 'Landeswettbewerb Prima La Musica',
     description: 'Gewann den 1. Preis mit 93 Punkten, der Wertungskategorie Violoncello IIIplus',
     fullDescription: 'Gewann den 1. Preis mit 93 Punkten, der Wertungskategorie Violoncello IIIplus',
-    image: 'https://images.unsplash.com/photo-1593698054469-2bb0f0599846?q=80&w=800&auto=format&fit=crop',
+    image: 'https://musikderjugend.at/fileadmin/daten/allgemein/Logos_Musik_der_Jugend.svg',
     type: 'award'
   },
   {
@@ -323,7 +323,7 @@ const AWARDS_AND_PRESS = [
     title: 'Bundeswettbewerb Prima La Musica',
     description: 'Gewann den 2. Preis, der Wertungskategorie Kammermusik für Klavier',
     fullDescription: 'Gewann den 2. Preis, der Wertungskategorie Kammermusik für Klavier',
-    image: 'https://images.unsplash.com/photo-1621360841013-c76831f1628f?q=80&w=800&auto=format&fit=crop',
+    image: 'https://musikderjugend.at/fileadmin/daten/allgemein/Logos_Musik_der_Jugend.svg',
     type: 'award'
   },
   {
@@ -332,7 +332,7 @@ const AWARDS_AND_PRESS = [
     title: 'Landeswettbewerb Prima La Musica',
     description: 'Gewann den 1. Preis, der Wertungskategorie Kammermusik für Klavier',
     fullDescription: 'Gewann den 1. Preis, der Wertungskategorie Kammermusik für Klavier',
-    image: 'https://images.unsplash.com/photo-1465847899084-d164df4dedc6?q=80&w=800&auto=format&fit=crop',
+    image: 'https://musikderjugend.at/fileadmin/daten/allgemein/Logos_Musik_der_Jugend.svg',
     type: 'award'
   }
 ];
@@ -775,10 +775,11 @@ const App: React.FC = () => {
               transition={{ duration: 1.5, delay: 0.6, ease: "easeOut" }}
               className="relative w-full h-[65vh] sm:h-[60vh] md:h-[70vh] lg:h-[85vh] mt-6 lg:mt-0 max-w-lg sm:max-w-xl mx-auto lg:max-w-none lg:col-span-7"
             >
-              <div className="absolute inset-0 bg-secession-black rounded-t-[140px] sm:rounded-t-[200px] lg:rounded-t-[300px] overflow-hidden cursor-pointer" onClick={() => setFullscreenImage("https://images.unsplash.com/photo-1690273033084-66ec2d39b8c3?q=80&w=745&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")}>
+              <div className="absolute inset-0 bg-secession-black rounded-t-[140px] sm:rounded-t-[200px] lg:rounded-t-[300px] overflow-hidden cursor-pointer" onClick={() => setFullscreenImage("https://scontent-vie1-1.cdninstagram.com/v/t51.75761-15/504294764_18375063745126767_2542406022236296222_n.webp?stp=dst-webp_p750x750_sh0.08&_nc_cat=108&ig_cache_key=MzY1MjA4MDM2OTkyNjE5NzU1NQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0NDB4MTgwMC5zZHIuQzMifQ%3D%3D&_nc_ohc=X5iqosgSUCoQ7kNvwHSU32B&_nc_oc=AdrHFGoCcgwHwwO7k_IX10Jcn9G9bqZ1Ex8g5C_CdsOUbLqhRRZEpxdH743tbmcfw1fn37ZtHu3_krmZBxvHZ8jD&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent-vie1-1.cdninstagram.com&_nc_gid=Nd66GKbRMSxTLvoHpyH38w&_nc_ss=7a32e&oh=00_Af2V6XRkx6LPGmOg3WsLQUwVhDr6wg7S1_21mlnv_Oyaew&oe=69DC2536")}>
                 <img 
-                  src="https://images.unsplash.com/photo-1690273033084-66ec2d39b8c3?q=80&w=745&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+                  src="https://scontent-vie1-1.cdninstagram.com/v/t51.75761-15/504294764_18375063745126767_2542406022236296222_n.webp?stp=dst-webp_p750x750_sh0.08&_nc_cat=108&ig_cache_key=MzY1MjA4MDM2OTkyNjE5NzU1NQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0NDB4MTgwMC5zZHIuQzMifQ%3D%3D&_nc_ohc=X5iqosgSUCoQ7kNvwHSU32B&_nc_oc=AdrHFGoCcgwHwwO7k_IX10Jcn9G9bqZ1Ex8g5C_CdsOUbLqhRRZEpxdH743tbmcfw1fn37ZtHu3_krmZBxvHZ8jD&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent-vie1-1.cdninstagram.com&_nc_gid=Nd66GKbRMSxTLvoHpyH38w&_nc_ss=7a32e&oh=00_Af2V6XRkx6LPGmOg3WsLQUwVhDr6wg7S1_21mlnv_Oyaew&oe=69DC2536" 
                   alt="Bernadette König playing cello" 
+                  referrerPolicy="no-referrer"
                   className="w-full h-full object-cover object-[center_20%] lg:object-center opacity-80 mix-blend-luminosity hover:mix-blend-normal transition-all duration-1000"
                 />
               </div>
@@ -824,10 +825,11 @@ const App: React.FC = () => {
                 transition={{ duration: 1 }}
                 className="lg:col-span-5 relative"
               >
-                <div className="aspect-[4/5] lg:aspect-[3/4] overflow-hidden border-4 lg:border-8 border-vienna-gold/30 shadow-2xl relative z-10 max-w-md mx-auto lg:max-w-none cursor-pointer" onClick={() => setFullscreenImage("https://images.unsplash.com/photo-1690278813437-9aeb9a219d02?q=80&w=707&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")}>
+                <div className="aspect-[4/5] lg:aspect-[3/4] overflow-hidden border-4 lg:border-8 border-vienna-gold/30 shadow-2xl relative z-10 max-w-md mx-auto lg:max-w-none cursor-pointer" onClick={() => setFullscreenImage("https://scontent-vie1-1.cdninstagram.com/v/t51.75761-15/504824538_18375063748126767_8152850662367009473_n.webp?stp=dst-webp_p750x750_sh0.08&_nc_cat=103&ig_cache_key=MzY1MjA4MDM2OTkwOTUyNDQzNA%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0NDB4MTgwMC5zZHIuQzMifQ%3D%3D&_nc_ohc=6Q08o2Vf5QUQ7kNvwG0d8-Q&_nc_oc=AdrWponx1iJJjG6rKw4fE_r8PYN9Qj91CmJCcJlnhcmkTq7jq6G1aHJ0RiRTEtBAEJwM6gi37DgXt-Jksy2uanSx&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent-vie1-1.cdninstagram.com&_nc_gid=Nd66GKbRMSxTLvoHpyH38w&_nc_ss=7a32e&oh=00_Af09hw6Pe4urIrHVkDnOeTsTb4_rLJ2zwR1IVx_c8aKtjw&oe=69DC1BE0")}>
                   <img 
-                    src="https://images.unsplash.com/photo-1690278813437-9aeb9a219d02?q=80&w=707&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+                    src="https://scontent-vie1-1.cdninstagram.com/v/t51.75761-15/504824538_18375063748126767_8152850662367009473_n.webp?stp=dst-webp_p750x750_sh0.08&_nc_cat=103&ig_cache_key=MzY1MjA4MDM2OTkwOTUyNDQzNA%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0NDB4MTgwMC5zZHIuQzMifQ%3D%3D&_nc_ohc=6Q08o2Vf5QUQ7kNvwG0d8-Q&_nc_oc=AdrWponx1iJJjG6rKw4fE_r8PYN9Qj91CmJCcJlnhcmkTq7jq6G1aHJ0RiRTEtBAEJwM6gi37DgXt-Jksy2uanSx&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent-vie1-1.cdninstagram.com&_nc_gid=Nd66GKbRMSxTLvoHpyH38w&_nc_ss=7a32e&oh=00_Af09hw6Pe4urIrHVkDnOeTsTb4_rLJ2zwR1IVx_c8aKtjw&oe=69DC1BE0" 
                     alt="Cello details" 
+                    referrerPolicy="no-referrer"
                     className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
                   />
                 </div>
@@ -939,6 +941,7 @@ const App: React.FC = () => {
                         <img 
                           src={item.image} 
                           alt={item.title} 
+                          referrerPolicy="no-referrer"
                           className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700"
                         />
                       </div>
@@ -987,6 +990,7 @@ const App: React.FC = () => {
                       <img 
                         src={rec.image} 
                         alt={rec.title} 
+                        referrerPolicy="no-referrer"
                         className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 grayscale group-hover:grayscale-0"
                       />
                       <div className="absolute inset-0 bg-secession-black/40 group-hover:bg-transparent transition-colors duration-500" />
@@ -1224,7 +1228,7 @@ const App: React.FC = () => {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                       {rec.gallery.map((img, idx) => (
                         <div key={idx} className="aspect-square overflow-hidden border-4 border-cream shadow-xl cursor-pointer" onClick={() => setFullscreenImage(img)}>
-                          <img src={img} alt={`${rec.title} gallery ${idx + 1}`} className="w-full h-full object-cover hover:scale-105 transition-transform duration-700 grayscale hover:grayscale-0" />
+                          <img src={img} alt={`${rec.title} gallery ${idx + 1}`} referrerPolicy="no-referrer" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700 grayscale hover:grayscale-0" />
                         </div>
                       ))}
                     </div>
@@ -1420,6 +1424,7 @@ const App: React.FC = () => {
               <img 
                 src={fullscreenImage} 
                 alt="Fullscreen view"
+                referrerPolicy="no-referrer"
                 className="max-w-full max-h-[85vh] object-contain relative z-0 shadow-2xl"
               />
             </motion.div>
@@ -1461,6 +1466,7 @@ const App: React.FC = () => {
                       <img 
                         src={award.image} 
                         alt={award.title} 
+                        referrerPolicy="no-referrer"
                         className="absolute inset-0 w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
                       />
                       {/* Geometric overlay */}
@@ -1527,12 +1533,13 @@ const App: React.FC = () => {
                           <img 
                             src={concert.images[0]} 
                             alt={concert.program} 
+                            referrerPolicy="no-referrer"
                             className="absolute inset-0 w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
                           />
                           {concert.images.length > 1 && (
                             <div className="absolute bottom-0 left-0 right-0 flex gap-2 p-4 bg-gradient-to-t from-secession-black/80 to-transparent">
                               {concert.images.slice(1).map((img, idx) => (
-                                <img key={idx} src={img} alt="" className="w-20 h-20 object-cover border border-cream/30 hover:border-vienna-gold transition-colors" />
+                                <img key={idx} src={img} alt="" referrerPolicy="no-referrer" className="w-20 h-20 object-cover border border-cream/30 hover:border-vienna-gold transition-colors" />
                               ))}
                             </div>
                           )}

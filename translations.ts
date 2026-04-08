@@ -16,7 +16,7 @@ export const translations = {
       vienna: 'Wien',
       discover: 'Entdecken',
       quote: '"Ein Ton von reinem Bernstein und eine interpretatorische Tiefe, die über ihre Jahre hinausgeht."',
-      quoteAuthor: '— The Vienna Courier',
+      quoteAuthor: '— -Univ. Prof. Mag. Lilia Schulz-Bayrova',
       listenRecordings: 'Aufnahmen anhören'
     },
     biography: {
