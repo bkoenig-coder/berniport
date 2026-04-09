@@ -3,6 +3,7 @@ import { motion, useScroll, useTransform, AnimatePresence, useSpring } from 'fra
 import { Menu, X, Calendar, Play, MapPin, ChevronLeft, ChevronRight, ArrowRight, Instagram, Facebook, CheckCircle2 } from 'lucide-react';
 import { MoserGrid, KlimtCascade, HoffmannLeaves } from './components/SecessionArtworks';
 import { translations, Language } from './translations';
+import { SpeedInsights } from '@vercel/speed-insights/react';
 
 const SpotifyIcon = ({ className }: { className?: string }) => (
   <svg viewBox="0 0 24 24" fill="currentColor" className={className}>
@@ -1602,6 +1603,7 @@ const App: React.FC = () => {
         )}
       </AnimatePresence>
 
+      <SpeedInsights />
     </div>
   );
 };
