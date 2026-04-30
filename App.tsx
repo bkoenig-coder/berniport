@@ -477,6 +477,14 @@ const App: React.FC = () => {
   const [formStatus, setFormStatus] = useState<'idle' | 'submitting' | 'success'>('idle');
   const [isCalendarModalOpen, setIsCalendarModalOpen] = useState(false);
   const [showCurtain, setShowCurtain] = useState(true);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 1024);
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   // Biography scroll animation hooks
   const bioRef = useRef<HTMLDivElement>(null);
@@ -775,12 +783,16 @@ const App: React.FC = () => {
               transition={{ duration: 1.5, delay: 0.6, ease: "easeOut" }}
               className="relative w-full h-[65vh] sm:h-[60vh] md:h-[70vh] lg:h-[85vh] mt-6 lg:mt-0 max-w-lg sm:max-w-xl mx-auto lg:max-w-none lg:col-span-7"
             >
-              <div className="absolute inset-0 bg-secession-black rounded-t-[140px] sm:rounded-t-[200px] lg:rounded-t-[300px] overflow-hidden cursor-pointer" onClick={() => setFullscreenImage("https://scontent-vie1-1.cdninstagram.com/v/t51.75761-15/504294764_18375063745126767_2542406022236296222_n.webp?stp=dst-webp_p750x750_sh0.08&_nc_cat=108&ig_cache_key=MzY1MjA4MDM2OTkyNjE5NzU1NQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0NDB4MTgwMC5zZHIuQzMifQ%3D%3D&_nc_ohc=X5iqosgSUCoQ7kNvwHSU32B&_nc_oc=AdrHFGoCcgwHwwO7k_IX10Jcn9G9bqZ1Ex8g5C_CdsOUbLqhRRZEpxdH743tbmcfw1fn37ZtHu3_krmZBxvHZ8jD&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent-vie1-1.cdninstagram.com&_nc_gid=Nd66GKbRMSxTLvoHpyH38w&_nc_ss=7a32e&oh=00_Af2V6XRkx6LPGmOg3WsLQUwVhDr6wg7S1_21mlnv_Oyaew&oe=69DC2536")}>
-                <img 
-                  src="https://scontent-vie1-1.cdninstagram.com/v/t51.75761-15/504294764_18375063745126767_2542406022236296222_n.webp?stp=dst-webp_p750x750_sh0.08&_nc_cat=108&ig_cache_key=MzY1MjA4MDM2OTkyNjE5NzU1NQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0NDB4MTgwMC5zZHIuQzMifQ%3D%3D&_nc_ohc=X5iqosgSUCoQ7kNvwHSU32B&_nc_oc=AdrHFGoCcgwHwwO7k_IX10Jcn9G9bqZ1Ex8g5C_CdsOUbLqhRRZEpxdH743tbmcfw1fn37ZtHu3_krmZBxvHZ8jD&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent-vie1-1.cdninstagram.com&_nc_gid=Nd66GKbRMSxTLvoHpyH38w&_nc_ss=7a32e&oh=00_Af2V6XRkx6LPGmOg3WsLQUwVhDr6wg7S1_21mlnv_Oyaew&oe=69DC2536" 
+              <div className="absolute inset-0 bg-secession-black rounded-t-[140px] sm:rounded-t-[200px] lg:rounded-t-[300px] overflow-hidden cursor-pointer" onClick={() => setFullscreenImage("/media/berni1.png")}>
+                <motion.img 
+                  src="/media/berni1.png" 
                   alt="Bernadette König playing cello" 
-                  referrerPolicy="no-referrer"
-                  className="w-full h-full object-cover object-[center_20%] lg:object-center opacity-80 mix-blend-luminosity hover:mix-blend-normal transition-all duration-1000"
+                  initial={isMobile ? { filter: "grayscale(100%)", opacity: 0.8 } : false}
+                  whileInView={isMobile ? { filter: "grayscale(0%)", opacity: 1 } : false}
+                  whileHover={!isMobile ? { filter: "grayscale(0%)", opacity: 1 } : false}
+                  viewport={{ once: false, amount: 0.4 }}
+                  transition={{ duration: 1 }}
+                  className={`w-full h-full object-cover object-[center_20%] lg:object-center transition-all duration-1000 ${!isMobile ? 'opacity-80 grayscale hover:grayscale-0 hover:opacity-100' : ''}`}
                 />
               </div>
               {/* Decorative border */}
@@ -825,12 +837,16 @@ const App: React.FC = () => {
                 transition={{ duration: 1 }}
                 className="lg:col-span-5 relative"
               >
-                <div className="aspect-[4/5] lg:aspect-[3/4] overflow-hidden border-4 lg:border-8 border-vienna-gold/30 shadow-2xl relative z-10 max-w-md mx-auto lg:max-w-none cursor-pointer" onClick={() => setFullscreenImage("https://scontent-vie1-1.cdninstagram.com/v/t51.75761-15/504824538_18375063748126767_8152850662367009473_n.webp?stp=dst-webp_p750x750_sh0.08&_nc_cat=103&ig_cache_key=MzY1MjA4MDM2OTkwOTUyNDQzNA%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0NDB4MTgwMC5zZHIuQzMifQ%3D%3D&_nc_ohc=6Q08o2Vf5QUQ7kNvwG0d8-Q&_nc_oc=AdrWponx1iJJjG6rKw4fE_r8PYN9Qj91CmJCcJlnhcmkTq7jq6G1aHJ0RiRTEtBAEJwM6gi37DgXt-Jksy2uanSx&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent-vie1-1.cdninstagram.com&_nc_gid=Nd66GKbRMSxTLvoHpyH38w&_nc_ss=7a32e&oh=00_Af09hw6Pe4urIrHVkDnOeTsTb4_rLJ2zwR1IVx_c8aKtjw&oe=69DC1BE0")}>
-                  <img 
-                    src="https://scontent-vie1-1.cdninstagram.com/v/t51.75761-15/504824538_18375063748126767_8152850662367009473_n.webp?stp=dst-webp_p750x750_sh0.08&_nc_cat=103&ig_cache_key=MzY1MjA4MDM2OTkwOTUyNDQzNA%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6InhwaWRzLjE0NDB4MTgwMC5zZHIuQzMifQ%3D%3D&_nc_ohc=6Q08o2Vf5QUQ7kNvwG0d8-Q&_nc_oc=AdrWponx1iJJjG6rKw4fE_r8PYN9Qj91CmJCcJlnhcmkTq7jq6G1aHJ0RiRTEtBAEJwM6gi37DgXt-Jksy2uanSx&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent-vie1-1.cdninstagram.com&_nc_gid=Nd66GKbRMSxTLvoHpyH38w&_nc_ss=7a32e&oh=00_Af09hw6Pe4urIrHVkDnOeTsTb4_rLJ2zwR1IVx_c8aKtjw&oe=69DC1BE0" 
+                <div className="aspect-[4/5] lg:aspect-[3/4] overflow-hidden border-4 lg:border-8 border-vienna-gold/30 shadow-2xl relative z-10 max-w-md mx-auto lg:max-w-none cursor-pointer" onClick={() => setFullscreenImage("/media/berni2.png")}>
+                  <motion.img 
+                    src="/media/berni2.png" 
                     alt="Cello details" 
-                    referrerPolicy="no-referrer"
-                    className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
+                    initial={isMobile ? { filter: "grayscale(100%)" } : false}
+                    whileInView={isMobile ? { filter: "grayscale(0%)" } : false}
+                    whileHover={!isMobile ? { filter: "grayscale(0%)" } : false}
+                    viewport={{ once: false, amount: 0.4 }}
+                    transition={{ duration: 1 }}
+                    className={`w-full h-full object-cover transition-all duration-700 ${!isMobile ? 'grayscale hover:grayscale-0' : ''}`}
                   />
                 </div>
                 {/* Geometric background accent */}
