@@ -738,43 +738,8 @@ const App: React.FC = () => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  // Biography scroll animation hooks
-  const bioRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress: bioScrollProgressRaw } = useScroll({
-    target: bioRef,
-    offset: ["start 95%", "start 5%"]
-  });
+  // Remove bioRef useScroll variables as we will use whileInView
   
-  const bioScrollProgress = useSpring(bioScrollProgressRaw, {
-    stiffness: 50,
-    damping: 20,
-    restDelta: 0.001
-  });
-
-  const p1Opacity = useTransform(bioScrollProgress, [0, 0.16], [0, 1]);
-  const p1Y = useTransform(bioScrollProgress, [0, 0.16], [20, 0]);
-  const p1Blur = useTransform(bioScrollProgress, [0, 0.16], ["blur(10px)", "blur(0px)"]);
-
-  const p2Opacity = useTransform(bioScrollProgress, [0.16, 0.33], [0, 1]);
-  const p2Y = useTransform(bioScrollProgress, [0.16, 0.33], [20, 0]);
-  const p2Blur = useTransform(bioScrollProgress, [0.16, 0.33], ["blur(10px)", "blur(0px)"]);
-
-  const p3Opacity = useTransform(bioScrollProgress, [0.33, 0.5], [0, 1]);
-  const p3Y = useTransform(bioScrollProgress, [0.33, 0.5], [20, 0]);
-  const p3Blur = useTransform(bioScrollProgress, [0.33, 0.5], ["blur(10px)", "blur(0px)"]);
-
-  const p4Opacity = useTransform(bioScrollProgress, [0.5, 0.66], [0, 1]);
-  const p4Y = useTransform(bioScrollProgress, [0.5, 0.66], [20, 0]);
-  const p4Blur = useTransform(bioScrollProgress, [0.5, 0.66], ["blur(10px)", "blur(0px)"]);
-
-  const p5Opacity = useTransform(bioScrollProgress, [0.66, 0.83], [0, 1]);
-  const p5Y = useTransform(bioScrollProgress, [0.66, 0.83], [20, 0]);
-  const p5Blur = useTransform(bioScrollProgress, [0.66, 0.83], ["blur(10px)", "blur(0px)"]);
-
-  const p6Opacity = useTransform(bioScrollProgress, [0.83, 1], [0, 1]);
-  const p6Y = useTransform(bioScrollProgress, [0.83, 1], [20, 0]);
-  const p6Blur = useTransform(bioScrollProgress, [0.83, 1], ["blur(10px)", "blur(0px)"]);
-
   // Handle scroll events for header and active section
   useEffect(() => {
     const handleScroll = () => {
@@ -1117,29 +1082,19 @@ const App: React.FC = () => {
               >
                 <h2 className="text-4xl md:text-7xl font-serif mb-6 md:mb-10 text-vienna-gold italic">{t.biography.title}</h2>
                 <SecessionFrame className="!bg-cream/50 border-vienna-gold/30">
-                  <motion.div 
-                    ref={bioRef}
-                    className="space-y-4 md:space-y-6 text-secession-black/80 leading-relaxed text-base md:text-lg font-medium"
-                  >
-                    <motion.p style={isMobile ? { opacity: p1Opacity, y: p1Y } : { opacity: p1Opacity, y: p1Y, filter: p1Blur }}>
-                      {t.biography.text1}
-                    </motion.p>
-                    <motion.p style={isMobile ? { opacity: p2Opacity, y: p2Y } : { opacity: p2Opacity, y: p2Y, filter: p2Blur }}>
-                      {t.biography.text2}
-                    </motion.p>
-                    <motion.p style={isMobile ? { opacity: p3Opacity, y: p3Y } : { opacity: p3Opacity, y: p3Y, filter: p3Blur }}>
-                      {t.biography.text3}
-                    </motion.p>
-                    <motion.p style={isMobile ? { opacity: p4Opacity, y: p4Y } : { opacity: p4Opacity, y: p4Y, filter: p4Blur }}>
-                      {t.biography.text4}
-                    </motion.p>
-                    <motion.p style={isMobile ? { opacity: p5Opacity, y: p5Y } : { opacity: p5Opacity, y: p5Y, filter: p5Blur }}>
-                      {t.biography.text5}
-                    </motion.p>
-                    <motion.p style={isMobile ? { opacity: p6Opacity, y: p6Y } : { opacity: p6Opacity, y: p6Y, filter: p6Blur }}>
-                      {t.biography.text6}
-                    </motion.p>
-                  </motion.div>
+                  <div className="space-y-4 md:space-y-6 text-secession-black/80 leading-relaxed text-base md:text-lg font-medium">
+                    {[t.biography.text1, t.biography.text2, t.biography.text3, t.biography.text4, t.biography.text5, t.biography.text6].map((text, idx) => (
+                      <motion.p 
+                        key={idx}
+                        initial={{ opacity: 0, y: 20, filter: isMobile ? "none" : "blur(10px)" }}
+                        whileInView={{ opacity: 1, y: 0, filter: isMobile ? "none" : "blur(0px)" }}
+                        viewport={{ once: true, margin: isMobile ? "-10%" : "-20%" }}
+                        transition={{ duration: 0.8, delay: isMobile ? 0 : 0.1 * idx }}
+                      >
+                        {text}
+                      </motion.p>
+                    ))}
+                  </div>
                 </SecessionFrame>
                 <button className="mt-12 flex items-center gap-3 text-vienna-gold hover:text-secession-black transition-colors font-bold tracking-[0.2em] uppercase text-xs">
                   {t.biography.downloadCV} <ArrowRight className="w-4 h-4" />
