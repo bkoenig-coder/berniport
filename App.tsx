@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, useScroll, useTransform, AnimatePresence, useSpring } from 'framer-motion';
 import { Menu, X, Calendar, Play, MapPin, ChevronLeft, ChevronRight, ArrowRight, Instagram, Facebook, CheckCircle2 } from 'lucide-react';
-import { MoserGrid, KlimtCascade, HoffmannLeaves } from './components/SecessionArtworks';
 import { translations, Language } from './translations';
 
 const SpotifyIcon = ({ className }: { className?: string }) => (
@@ -130,7 +129,7 @@ const InstrumentalScrollbar = () => {
         
         {/* The Bow */}
         <motion.div
-          className="absolute left-1/2 h-[1px] md:h-[2px] w-12 md:w-24 bg-cream shadow-[0_0_4px_rgba(255,255,255,0.8)] md:shadow-[0_0_8px_rgba(255,255,255,0.8)]"
+          className="absolute left-1/2 h-[1px] md:h-[2px] w-12 md:w-24 bg-secession-black shadow-[0_0_4px_rgba(255,255,255,0.8)] md:shadow-[0_0_8px_rgba(255,255,255,0.8)]"
           style={{
             top: topPosition,
             x: "-50%",
@@ -353,8 +352,8 @@ const Imprint = ({ t }: { t: any }) => (
         </div>
 
         <div className="my-8">
-          <p><strong>Tel.:</strong> +43 1 234 5678</p>
-          <p><strong>E-Mail:</strong> <a href="mailto:management@bernadettekoenig.com" className="hover:text-vienna-gold transition-colors">management@bernadettekoenig.com</a></p>
+          <p><strong>Tel.:</strong> +43 676 9785975</p>
+          <p><strong>E-Mail:</strong> <a href="mailto:b.koenig0303@gmail.com" className="hover:text-vienna-gold transition-colors">b.koenig0303@gmail.com</a></p>
         </div>
 
         <div className="my-8">
@@ -386,7 +385,7 @@ const PrivacyPolicy = ({ t }: { t: any }) => (
         
         <h2 className="text-3xl font-serif mt-12 mb-4 text-secession-black">{t.privacy.section1Title}</h2>
         <p>{t.privacy.section1Text}</p>
-        <p className="pl-4 border-l-2 border-vienna-gold">Bernadette König<br/>Kärntner Straße 1<br/>1010 Wien, Österreich<br/>E-Mail: management@bernadettekoenig.com</p>
+        <p className="pl-4 border-l-2 border-vienna-gold">Bernadette König<br/>Kärntner Straße 1<br/>1010 Wien, Österreich<br/>E-Mail: b.koenig0303@gmail.com</p>
 
         <h2 className="text-3xl font-serif mt-12 mb-4 text-secession-black">{t.privacy.section2Title}</h2>
         <h3 className="text-xl font-bold mb-2 text-secession-black">{t.privacy.section2Subtitle}</h3>
@@ -448,6 +447,129 @@ const TheatreCurtain = ({ onComplete }: { onComplete: () => void }) => {
         <div className="absolute inset-0 opacity-40 mix-blend-multiply" style={{ filter: 'url(#velvet-noise)' }}></div>
         {/* Fringe */}
         <div className="absolute top-0 bottom-0 left-[-6px] w-[6px] bg-[repeating-linear-gradient(0deg,#D4AF37,#D4AF37_2px,#B8860B_2px,#B8860B_4px)]"></div>
+      </motion.div>
+    </div>
+  );
+};
+
+const CinematicBackground = () => {
+  // Generate random particles for a dust effect
+  const particles = Array.from({ length: 40 }).map((_, i) => ({
+    id: i,
+    size: Math.random() * 2 + 1,
+    left: `${Math.random() * 100}%`,
+    top: `${Math.random() * 100}%`,
+    duration: Math.random() * 20 + 20,
+    delay: Math.random() * -20,
+  }));
+
+  return (
+    <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden bg-cream">
+      {/* Subtle light grading from top */}
+      <div className="absolute inset-0 bg-gradient-to-b from-vienna-gold/5 via-transparent to-transparent mix-blend-overlay" />
+      
+      {/* Heavy Vignette */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.6)_100%)] z-10 pointer-events-none mix-blend-multiply" />
+      
+      <div className="absolute inset-0 opacity-40 mix-blend-screen z-0">
+        {particles.map((p) => (
+          <motion.div
+            key={p.id}
+            className="absolute rounded-full bg-secession-black blur-[1px]"
+            style={{
+              width: p.size,
+              height: p.size,
+              left: p.left,
+              top: p.top,
+              opacity: 0
+            }}
+            animate={{
+              y: [0, -100, -200],
+              x: [0, Math.random() * 40 - 20, Math.random() * 40 - 20],
+              opacity: [0, 0.4, 0]
+            }}
+            transition={{
+              duration: p.duration,
+              repeat: Infinity,
+              delay: p.delay,
+              ease: "linear"
+            }}
+          />
+        ))}
+      </div>
+
+      {/* Cinematic light leak 1 */}
+      <motion.div 
+        className="absolute top-[-10%] right-[10%] w-[50vw] h-[30vh] bg-vienna-gold/5 blur-[80px] origin-top-right mix-blend-screen rounded-full"
+        animate={{
+          opacity: [0.1, 0.3, 0.1],
+          scale: [1, 1.1, 1],
+        }}
+        transition={{
+          duration: 12,
+          repeat: Infinity,
+          ease: "easeInOut"
+        }}
+      />
+      
+      {/* Cinematic light leak 2 */}
+      <motion.div 
+        className="absolute bottom-[-10%] left-[10%] w-[40vw] h-[40vh] bg-vienna-gold/5 blur-[100px] origin-bottom-left mix-blend-screen rounded-full"
+        animate={{
+          opacity: [0.05, 0.2, 0.05],
+          scale: [1, 1.2, 1],
+        }}
+        transition={{
+          duration: 18,
+          repeat: Infinity,
+          ease: "easeInOut"
+        }}
+      />
+    </div>
+  );
+};
+
+const TheatreLight = () => {
+  return (
+    <div className="absolute top-0 left-0 right-0 pointer-events-none z-0 flex justify-center h-full overflow-hidden">
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.1 }}
+        variants={{
+          hidden: { opacity: 0 },
+          visible: { opacity: 1, transition: { duration: 0.5 } }
+        }}
+        className="flex flex-col items-center w-full h-full"
+      >
+        {/* The Wire */}
+        <div className="w-[1px] h-12 md:h-20 bg-vienna-gold/30" />
+        
+        {/* The Bulb Housing */}
+        <div className="w-6 h-4 md:w-8 md:h-5 bg-secession-black border border-vienna-gold/30 rounded-t-full relative z-10 flex justify-center">
+             {/* The glowing bulb */}
+             <motion.div 
+               className="w-3 h-3 md:w-4 md:h-4 rounded-full absolute -bottom-1"
+               variants={{
+                 hidden: { boxShadow: '0 0 0px 0px rgba(197,160,89,0)', backgroundColor: '#333' },
+                 visible: { 
+                    boxShadow: '0 0 40px 20px rgba(197,160,89,0.8), 0 0 80px 40px rgba(197,160,89,0.3)', 
+                    backgroundColor: '#FFF',
+                    transition: { duration: 1.5 }
+                 }
+               }}
+             />
+        </div>
+
+        {/* The Beam */}
+        <motion.div 
+          className="absolute inset-0 origin-top bg-gradient-to-b from-vienna-gold/20 via-vienna-gold/5 to-transparent mix-blend-screen scale-x-[2]"
+          style={{ clipPath: 'polygon(49.8% 0%, 50.2% 0%, 100% 100%, 0% 100%)', top: '48px' }}
+          variants={{
+            hidden: { scaleY: 0, opacity: 0 },
+            visible: { scaleY: 1, opacity: 1, transition: { duration: 2, delay: 0.2, ease: "easeOut" } }
+          }}
+        />
       </motion.div>
     </div>
   );
@@ -565,6 +687,17 @@ const App: React.FC = () => {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [currentPage]);
 
+  useEffect(() => {
+    if (mobileMenuOpen || selectedImageIndex !== null || selectedAwardId !== null || selectedConcertId !== null || fullscreenImage !== null) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+  }, [mobileMenuOpen, selectedImageIndex, selectedAwardId, selectedConcertId, fullscreenImage]);
+
   const scrollToSection = (id: string) => {
     setMobileMenuOpen(false);
     if (currentPage !== 'home') {
@@ -590,7 +723,8 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-cream text-secession-black font-sans selection:bg-vienna-gold selection:text-cream relative">
+    <div className="min-h-screen overflow-x-hidden bg-cream text-secession-black font-sans selection:bg-vienna-gold selection:text-cream relative">
+      <CinematicBackground />
       <AnimatePresence>
         {showCurtain && <TheatreCurtain onComplete={() => setShowCurtain(false)} />}
       </AnimatePresence>
@@ -660,7 +794,7 @@ const App: React.FC = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-40 bg-cream flex flex-col items-center justify-center gap-8 md:hidden"
+            className="fixed inset-0 z-40 bg-cream/80 backdrop-blur-3xl flex flex-col items-center justify-center gap-8 md:hidden"
           >
             <SecessionOrnament className="mb-8" />
             {[
@@ -718,7 +852,7 @@ const App: React.FC = () => {
             transition={{ duration: 0.5 }}
           >
             {/* HERO SECTION */}
-            <header className="relative min-h-screen flex items-center justify-center overflow-hidden bg-cream pt-16 sm:pt-20 px-4 sm:px-6">
+            <header className="relative min-h-screen flex items-center justify-center overflow-hidden bg-transparent pt-16 sm:pt-20 px-4 sm:px-6 z-10">
           {/* Huge background text */}
           <motion.div 
             style={{ y: wienY, opacity: wienOpacity, scale: wienScale }}
@@ -769,7 +903,7 @@ const App: React.FC = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 1.4, duration: 0.8 }}
                 onClick={() => scrollToSection('recordings')}
-                className="mt-4 sm:mt-6 md:mt-10 flex items-center gap-2 sm:gap-3 text-secession-black hover:text-vienna-gold transition-colors font-bold tracking-[0.2em] uppercase text-[10px] sm:text-xs border border-secession-black hover:border-vienna-gold px-5 py-2.5 sm:px-6 sm:py-3 md:px-8 md:py-4"
+                className="mt-4 sm:mt-6 md:mt-10 flex items-center gap-2 sm:gap-3 text-secession-black hover:text-cream transition-colors font-bold tracking-[0.2em] uppercase text-[10px] sm:text-xs border border-secession-black hover:border-vienna-gold hover:bg-vienna-gold px-5 py-2.5 sm:px-6 sm:py-3 md:px-8 md:py-4"
               >
                 {t.hero.listenRecordings} <Play className="w-3 h-3 sm:w-4 sm:h-4" />
               </motion.button>
@@ -783,7 +917,7 @@ const App: React.FC = () => {
               transition={{ duration: 1.5, delay: 0.6, ease: "easeOut" }}
               className="relative w-full h-[65vh] sm:h-[60vh] md:h-[70vh] lg:h-[85vh] mt-6 lg:mt-0 max-w-lg sm:max-w-xl mx-auto lg:max-w-none lg:col-span-7"
             >
-              <div className="absolute inset-0 bg-secession-black rounded-t-[140px] sm:rounded-t-[200px] lg:rounded-t-[300px] overflow-hidden cursor-pointer" onClick={() => setFullscreenImage("/media/berni1.png")}>
+              <div className="absolute inset-0 bg-cream rounded-t-[140px] sm:rounded-t-[200px] lg:rounded-t-[300px] overflow-hidden cursor-pointer" onClick={() => setFullscreenImage("/media/berni1.png")}>
                 <motion.img 
                   src="/media/berni1.png" 
                   alt="Bernadette König playing cello" 
@@ -806,7 +940,7 @@ const App: React.FC = () => {
             className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-20 pointer-events-none"
           >
             <span className="text-[10px] uppercase tracking-[0.3em] text-secession-black/50 font-bold">Scroll</span>
-            <div className="w-px h-12 bg-secession-black/20 relative overflow-hidden">
+            <div className="w-px h-12 bg-cream/20 relative overflow-hidden">
               <motion.div 
                 animate={{ y: [0, 48, 0] }}
                 transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
@@ -817,17 +951,12 @@ const App: React.FC = () => {
         </header>
 
         {/* BIOGRAPHY SECTION */}
-        <section id="biography" className="py-16 md:py-32 bg-secession-black text-cream px-6 md:px-12 relative overflow-hidden">
+        <section id="biography" className="py-16 md:py-32 bg-transparent text-secession-black px-6 md:px-12 relative overflow-hidden z-10">
+          <TheatreLight />
           {/* Subtle background pattern */}
           <div className="absolute inset-0 opacity-5" style={{ backgroundImage: 'radial-gradient(#D4AF37 1px, transparent 1px)', backgroundSize: '30px 30px' }} />
           
-          {/* Decorative Klimt Cascade */}
-          <div className="absolute right-0 top-1/4 w-32 md:w-64 opacity-20 pointer-events-none translate-x-1/4">
-            <KlimtCascade className="w-full h-auto" />
-          </div>
-          
-          <div className="max-w-7xl mx-auto relative z-10">
-            <SecessionOrnament className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 text-vienna-gold" />
+          <div className="max-w-7xl mx-auto relative z-10 mt-16 md:mt-24">
             
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center mt-8 md:mt-12">
               <motion.div 
@@ -849,8 +978,6 @@ const App: React.FC = () => {
                     className={`w-full h-full object-cover transition-all duration-700 ${!isMobile ? 'grayscale hover:grayscale-0' : ''}`}
                   />
                 </div>
-                {/* Geometric background accent */}
-                <div className="absolute -top-4 -left-4 lg:-top-6 lg:-left-6 w-full h-full bg-vienna-gold/20 z-0 max-w-md mx-auto lg:max-w-none" />
               </motion.div>
 
               <motion.div
@@ -861,10 +988,10 @@ const App: React.FC = () => {
                 className="lg:col-span-7 lg:pl-12"
               >
                 <h2 className="text-4xl md:text-7xl font-serif mb-6 md:mb-10 text-vienna-gold italic">{t.biography.title}</h2>
-                <SecessionFrame className="!bg-secession-black/50 border-vienna-gold/30">
+                <SecessionFrame className="!bg-cream/50 border-vienna-gold/30">
                   <motion.div 
                     ref={bioRef}
-                    className="space-y-4 md:space-y-6 text-cream/80 leading-relaxed text-base md:text-lg font-medium"
+                    className="space-y-4 md:space-y-6 text-secession-black/80 leading-relaxed text-base md:text-lg font-medium"
                   >
                     <motion.p style={{ opacity: p1Opacity, y: p1Y, filter: p1Blur }}>
                       {t.biography.text1}
@@ -886,7 +1013,7 @@ const App: React.FC = () => {
                     </motion.p>
                   </motion.div>
                 </SecessionFrame>
-                <button className="mt-12 flex items-center gap-3 text-vienna-gold hover:text-cream transition-colors font-bold tracking-[0.2em] uppercase text-xs">
+                <button className="mt-12 flex items-center gap-3 text-vienna-gold hover:text-secession-black transition-colors font-bold tracking-[0.2em] uppercase text-xs">
                   {t.biography.downloadCV} <ArrowRight className="w-4 h-4" />
                 </button>
               </motion.div>
@@ -895,28 +1022,22 @@ const App: React.FC = () => {
         </section>
 
         {/* AWARDS & RECOGNITION SECTION */}
-        <section id="awards" className="py-16 md:py-32 px-6 md:px-12 max-w-7xl mx-auto">
-          <SecessionFrame className="p-8 md:p-12 lg:p-16">
+        <section id="awards" className="py-16 md:py-32 px-6 md:px-12 max-w-7xl mx-auto relative overflow-hidden z-10">
+          <TheatreLight />
+          <SecessionFrame className="p-8 md:p-12 lg:p-16 mt-16 md:mt-24">
             <div className="flex flex-col lg:flex-row gap-12 lg:gap-20 items-start">
-              <div className="lg:w-1/3 lg:sticky top-32 relative">
-                {/* Decorative background ampersand */}
-                <div className="absolute -top-12 -left-8 md:-top-20 md:-left-12 text-[10rem] md:text-[14rem] font-serif text-vienna-gold/10 select-none pointer-events-none italic leading-none z-0">
-                  &
-                </div>
-                
+              <div className="lg:w-1/3 lg:sticky lg:top-32 relative">
                 <h2 className="relative z-10 flex flex-col mb-8">
                   <span className="text-4xl md:text-5xl lg:text-6xl font-serif text-secession-black leading-tight mb-2" style={{ hyphens: 'auto', wordBreak: 'break-word' }}>
                     {t.awards.title}
                   </span>
                   <span className="flex items-center gap-4 mt-2">
-                    <span className="text-3xl md:text-4xl font-serif text-imperial-red italic">&</span>
                     <span className="text-sm md:text-base font-sans tracking-[0.4em] uppercase text-secession-black font-bold">
                       {t.awards.prizes}
                     </span>
                     <div className="flex-1 h-px bg-vienna-gold/50 ml-2"></div>
                   </span>
                 </h2>
-                <SecessionOrnament className="items-start relative z-10" />
               </div>
               <div className="lg:w-2/3 space-y-12 md:space-y-16">
                 {AWARDS_AND_PRESS.map((item, index) => (
@@ -926,7 +1047,7 @@ const App: React.FC = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6, delay: index * 0.1 }}
-                    className="border border-vienna-gold/30 p-6 md:p-8 relative group cursor-pointer bg-white/40 hover:bg-white transition-all duration-500 shadow-sm hover:shadow-md"
+                    className="border border-vienna-gold/30 p-6 md:p-8 relative group cursor-pointer bg-vienna-gold/5 hover:bg-vienna-gold/10 transition-all duration-500 shadow-sm hover:shadow-md"
                     onClick={() => setSelectedAwardId(item.id)}
                   >
                     {/* Secessionist Corner Accents */}
@@ -939,7 +1060,7 @@ const App: React.FC = () => {
                     <div className="absolute inset-2 border border-vienna-gold/0 group-hover:border-vienna-gold/20 transition-colors duration-500 pointer-events-none"></div>
 
                     <div className="flex flex-col sm:flex-row gap-6 md:gap-8 items-start relative z-10">
-                      <div className="flex-1 order-2 sm:order-1">
+                      <div className="flex-1">
                         <span className="text-imperial-red font-bold tracking-widest text-xs md:text-sm uppercase flex items-center gap-3">
                           <span className="w-2 h-2 bg-vienna-gold inline-block rotate-45 group-hover:bg-imperial-red group-hover:rotate-[135deg] transition-all duration-500"></span>
                           {item.year}
@@ -952,7 +1073,7 @@ const App: React.FC = () => {
                           Read More <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform duration-300" />
                         </span>
                       </div>
-                      <div className="w-full sm:w-32 md:w-40 lg:w-48 aspect-video sm:aspect-square overflow-hidden border-2 border-vienna-gold/30 shrink-0 order-1 sm:order-2 relative">
+                      <div className="w-full sm:w-32 md:w-40 lg:w-48 aspect-video sm:aspect-square overflow-hidden border-2 border-vienna-gold/30 shrink-0 relative">
                         <div className="absolute inset-0 bg-vienna-gold/20 mix-blend-multiply opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10"></div>
                         <img 
                           src={item.image} 
@@ -970,16 +1091,12 @@ const App: React.FC = () => {
         </section>
 
         {/* RECORDINGS SECTION */}
-        <section id="recordings" className="py-16 md:py-32 bg-secession-black text-cream px-6 md:px-12 relative overflow-hidden">
+        <section id="recordings" className="py-16 md:py-32 bg-transparent text-secession-black px-6 md:px-12 relative overflow-hidden z-10">
+          <TheatreLight />
           {/* Subtle background pattern */}
           <div className="absolute inset-0 opacity-5" style={{ backgroundImage: 'radial-gradient(#D4AF37 1px, transparent 1px)', backgroundSize: '30px 30px' }} />
           
-          {/* Decorative Moser Grid */}
-          <div className="absolute inset-0 opacity-[0.03] pointer-events-none flex items-center justify-center">
-            <MoserGrid className="w-full max-w-4xl h-auto" />
-          </div>
-          
-          <div className="max-w-7xl mx-auto relative z-10">
+          <div className="max-w-7xl mx-auto relative z-10 mt-16 md:mt-24">
             <div className="flex flex-col md:flex-row justify-between items-end mb-12 md:mb-20">
               <div>
                 <h2 className="text-4xl md:text-7xl font-serif mb-4 md:mb-6 text-vienna-gold">{t.recordings.title}</h2>
@@ -1009,20 +1126,20 @@ const App: React.FC = () => {
                         referrerPolicy="no-referrer"
                         className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 grayscale group-hover:grayscale-0"
                       />
-                      <div className="absolute inset-0 bg-secession-black/40 group-hover:bg-transparent transition-colors duration-500" />
+                      <div className="absolute inset-0 bg-cream/40 group-hover:bg-transparent transition-colors duration-500" />
                       <div className="absolute inset-0 flex items-center justify-center opacity-100 lg:opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                        <div className="w-16 h-16 lg:w-20 lg:h-20 rounded-full border border-vienna-gold flex items-center justify-center text-vienna-gold backdrop-blur-md bg-secession-black/50">
+                        <div className="w-16 h-16 lg:w-20 lg:h-20 rounded-full border border-vienna-gold flex items-center justify-center text-vienna-gold backdrop-blur-md bg-cream/50">
                           <Play className="w-6 h-6 lg:w-8 lg:h-8 ml-1" />
                         </div>
                       </div>
                     </div>
                   </div>
                   <div className="flex justify-between items-start mb-3">
-                    <h3 className="text-2xl font-serif text-cream">{rec.title}</h3>
+                    <h3 className="text-2xl font-serif text-secession-black">{rec.title}</h3>
                     <span className="text-vienna-gold text-sm font-bold tracking-widest">{rec.year}</span>
                   </div>
                   <p className="text-xs text-imperial-red font-bold uppercase tracking-[0.2em] mb-4">{rec.label}</p>
-                  <p className="text-sm text-cream/60 font-medium leading-relaxed">
+                  <p className="text-sm text-secession-black/60 font-medium leading-relaxed">
                     {rec.description}
                   </p>
                 </motion.div>
@@ -1032,9 +1149,9 @@ const App: React.FC = () => {
         </section>
 
         {/* CALENDAR SECTION */}
-        <section id="calendar" className="py-16 md:py-32 px-6 md:px-12 max-w-6xl mx-auto">
-          <div className="text-center mb-16 md:mb-24 relative">
-            <SecessionOrnament className="absolute -top-16 left-1/2 -translate-x-1/2" />
+        <section id="calendar" className="py-16 md:py-32 px-6 md:px-12 max-w-6xl mx-auto relative overflow-hidden z-10">
+          <TheatreLight />
+          <div className="text-center mb-16 md:mb-24 relative mt-16 md:mt-24">
             <h2 className="text-4xl md:text-7xl font-serif mb-4 md:mb-6 text-secession-black">{t.calendar.title}</h2>
             <p className="text-secession-black/60 font-bold tracking-[0.2em] uppercase text-xs md:text-sm">{t.calendar.season}</p>
           </div>
@@ -1047,7 +1164,7 @@ const App: React.FC = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="border border-vienna-gold/30 p-8 relative group cursor-pointer bg-white/40 hover:bg-white transition-all duration-500 shadow-sm hover:shadow-md flex flex-col"
+                className="border border-vienna-gold/30 p-8 relative group cursor-pointer bg-vienna-gold/5 hover:bg-vienna-gold/10 transition-all duration-500 shadow-sm hover:shadow-md flex flex-col"
                 onClick={() => setSelectedConcertId(concert.id)}
               >
                 {/* Secessionist Corner Accents */}
@@ -1091,15 +1208,16 @@ const App: React.FC = () => {
           <div className="text-center mt-16">
             <button 
               onClick={() => setIsCalendarModalOpen(true)}
-              className="px-10 py-4 border border-secession-black text-secession-black hover:bg-secession-black hover:text-cream transition-colors text-xs font-bold tracking-[0.2em] uppercase"
+              className="px-10 py-4 border border-secession-black text-secession-black hover:bg-vienna-gold hover:border-vienna-gold hover:text-cream transition-colors text-xs font-bold tracking-[0.2em] uppercase"
             >
               Alle Termine ansehen
             </button>
           </div>
         </section>
         {/* CONTACT SECTION */}
-        <section id="contact" className="py-24 md:py-32 px-6 md:px-12 max-w-7xl mx-auto">
-          <SecessionFrame className="!p-8 md:!p-16">
+        <section id="contact" className="py-24 md:py-32 px-6 md:px-12 max-w-7xl mx-auto relative overflow-hidden z-10">
+          <TheatreLight />
+          <SecessionFrame className="!p-8 md:!p-16 mt-12 md:mt-20">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -1111,7 +1229,6 @@ const App: React.FC = () => {
                 <p className="text-secession-black/80 font-medium text-lg leading-relaxed mb-8 max-w-md">
                   {t.contact.description}
                 </p>
-                <SecessionOrnament className="items-start opacity-50" />
               </motion.div>
               
               <motion.form 
@@ -1139,7 +1256,7 @@ const App: React.FC = () => {
                       <button 
                         type="button"
                         onClick={() => setFormStatus('idle')}
-                        className="mt-8 px-8 py-3 border border-secession-black text-secession-black hover:bg-secession-black hover:text-cream transition-colors text-xs font-bold tracking-[0.2em] uppercase"
+                        className="mt-8 px-8 py-3 border border-secession-black text-secession-black hover:bg-vienna-gold hover:border-vienna-gold hover:text-cream transition-colors text-xs font-bold tracking-[0.2em] uppercase"
                       >
                         Neue Nachricht
                       </button>
@@ -1169,7 +1286,7 @@ const App: React.FC = () => {
                   <button 
                     type="submit" 
                     disabled={formStatus !== 'idle'}
-                    className="px-10 py-4 bg-secession-black text-cream hover:bg-vienna-gold transition-colors text-xs font-bold tracking-[0.2em] uppercase w-full md:w-auto disabled:opacity-50 flex items-center justify-center gap-3"
+                    className="px-10 py-4 bg-vienna-gold text-cream hover:bg-secession-black hover:text-cream transition-colors text-xs font-bold tracking-[0.2em] uppercase w-full md:w-auto disabled:opacity-50 flex items-center justify-center gap-3"
                   >
                     {formStatus === 'submitting' ? (
                       <>Senden... <div className="w-4 h-4 border-2 border-cream border-t-transparent rounded-full animate-spin" /></>
@@ -1228,7 +1345,7 @@ const App: React.FC = () => {
                   </SecessionFrame>
 
                   {rec.youtubeId && (
-                    <div className="aspect-video w-full bg-secession-black border-4 border-vienna-gold shadow-2xl relative">
+                    <div className="aspect-video w-full bg-cream border-4 border-vienna-gold shadow-2xl relative">
                       <iframe 
                         className="absolute inset-0 w-full h-full"
                         src={`https://www.youtube.com/embed/${rec.youtubeId}`} 
@@ -1257,59 +1374,53 @@ const App: React.FC = () => {
       </AnimatePresence>
 
       {/* FOOTER */}
-      <footer className="bg-secession-black text-cream py-16 md:py-24 px-6 md:px-12 border-t-8 border-vienna-gold relative overflow-hidden">
-        {/* Decorative Hoffmann Leaves */}
-        <div className="absolute right-0 bottom-0 w-64 md:w-96 opacity-10 pointer-events-none translate-x-1/4 translate-y-1/4">
-          <HoffmannLeaves className="w-full h-auto" />
-        </div>
-        
+      <footer className="bg-transparent text-secession-black py-16 md:py-24 px-6 md:px-12 border-t-8 border-vienna-gold relative overflow-hidden z-10">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 md:gap-16 relative z-10">
           <div className="lg:col-span-2">
             <div className="font-serif text-3xl md:text-4xl font-medium mb-6 md:mb-8 text-vienna-gold italic">
               Bernadette König
             </div>
-            <p className="text-cream/70 font-medium max-w-sm leading-relaxed mb-8 text-sm md:text-base">
+            <p className="text-secession-black/70 font-medium max-w-sm leading-relaxed mb-8 text-sm md:text-base">
               Für allgemeine Anfragen, Meisterkurse und Pressematerialien kontaktieren Sie bitte das Management.
             </p>
-            <SecessionOrnament className="items-start opacity-50" />
           </div>
           
           <div>
             <h4 className="text-imperial-red text-xs font-bold tracking-[0.2em] uppercase mb-8">Management</h4>
-            <ul className="space-y-4 text-cream/80 font-medium text-sm">
+            <ul className="space-y-4 text-secession-black/80 font-medium text-sm">
               <li>
-                <strong className="text-cream block mb-1">Bernadette König</strong>
+                <strong className="text-secession-black block mb-1">Bernadette König</strong>
                 Wien, Österreich
               </li>
               <li>
-                <a href="mailto:management@bernadettekoenig.com" className="hover:text-vienna-gold transition-colors">
-                  management@bernadettekoenig.com
+                <a href="mailto:b.koenig0303@gmail.com" className="hover:text-vienna-gold transition-colors">
+                  b.koenig0303@gmail.com
                 </a>
               </li>
-              <li>+43 1 234 5678</li>
+              <li>+43 676 9785975</li>
             </ul>
           </div>
 
           <div>
             <h4 className="text-imperial-red text-xs font-bold tracking-[0.2em] uppercase mb-8">Connect</h4>
             <div className="flex gap-6">
-              <a href="#" className="text-cream/80 hover:text-vienna-gold transition-all hover:scale-110 hover:-translate-y-1" aria-label="Instagram">
+              <a href="#" className="text-secession-black/80 hover:text-vienna-gold transition-all hover:scale-110 hover:-translate-y-1" aria-label="Instagram">
                 <Instagram className="w-6 h-6" />
               </a>
-              <a href="#" className="text-cream/80 hover:text-vienna-gold transition-all hover:scale-110 hover:-translate-y-1" aria-label="Facebook">
+              <a href="#" className="text-secession-black/80 hover:text-vienna-gold transition-all hover:scale-110 hover:-translate-y-1" aria-label="Facebook">
                 <Facebook className="w-6 h-6" />
               </a>
-              <a href="#" className="text-cream/80 hover:text-vienna-gold transition-all hover:scale-110 hover:-translate-y-1" aria-label="Spotify">
+              <a href="#" className="text-secession-black/80 hover:text-vienna-gold transition-all hover:scale-110 hover:-translate-y-1" aria-label="Spotify">
                 <SpotifyIcon className="w-6 h-6" />
               </a>
-              <a href="#" className="text-cream/80 hover:text-vienna-gold transition-all hover:scale-110 hover:-translate-y-1" aria-label="Apple Music">
+              <a href="#" className="text-secession-black/80 hover:text-vienna-gold transition-all hover:scale-110 hover:-translate-y-1" aria-label="Apple Music">
                 <AppleIcon className="w-6 h-6" />
               </a>
             </div>
           </div>
         </div>
         
-        <div className="max-w-7xl mx-auto mt-16 md:mt-24 pt-8 border-t border-cream/10 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] md:text-xs text-cream/40 font-bold tracking-widest uppercase text-center md:text-left">
+        <div className="max-w-7xl mx-auto mt-16 md:mt-24 pt-8 border-t border-cream/10 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] md:text-xs text-secession-black/40 font-bold tracking-widest uppercase text-center md:text-left">
           <p>&copy; {new Date().getFullYear()} Bernadette König. {t.footer.rights}</p>
           <div className="flex flex-wrap justify-center gap-4 md:gap-8">
             <button onClick={() => { setCurrentPage('privacy'); window.scrollTo(0,0); }} className="hover:text-vienna-gold transition-colors uppercase tracking-widest">{t.nav.privacy}</button>
@@ -1325,11 +1436,11 @@ const App: React.FC = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[100] flex items-center justify-center bg-secession-black/95 backdrop-blur-xl p-4 md:p-12"
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-cream/95 backdrop-blur-xl p-4 md:p-12"
             onClick={() => setIsCalendarModalOpen(false)}
           >
             <button 
-              className="absolute top-6 right-6 text-cream hover:text-vienna-gold transition-colors z-10"
+              className="absolute top-6 right-6 text-secession-black hover:text-vienna-gold transition-colors z-10"
               onClick={() => setIsCalendarModalOpen(false)}
             >
               <X className="w-10 h-10" />
@@ -1403,11 +1514,11 @@ const App: React.FC = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[100] flex items-center justify-center bg-secession-black/95 backdrop-blur-xl p-4 md:p-12"
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-cream/95 backdrop-blur-xl p-4 md:p-12"
             onClick={() => setFullscreenImage(null)}
           >
             <button 
-              className="absolute top-6 right-6 text-cream hover:text-vienna-gold transition-colors z-10"
+              className="absolute top-6 right-6 text-secession-black hover:text-vienna-gold transition-colors z-10"
               onClick={() => setFullscreenImage(null)}
             >
               <X className="w-10 h-10" />
@@ -1455,11 +1566,11 @@ const App: React.FC = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[100] flex items-center justify-center bg-secession-black/95 backdrop-blur-xl p-4 md:p-12 overflow-y-auto"
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-cream/95 backdrop-blur-xl p-4 md:p-12 overflow-y-auto"
             onClick={() => setSelectedAwardId(null)}
           >
             <button 
-              className="fixed top-6 right-6 text-cream hover:text-vienna-gold transition-colors z-[110]"
+              className="fixed top-6 right-6 text-secession-black hover:text-vienna-gold transition-colors z-[110]"
               onClick={() => setSelectedAwardId(null)}
             >
               <X className="w-10 h-10" />
@@ -1486,7 +1597,7 @@ const App: React.FC = () => {
                         className="absolute inset-0 w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
                       />
                       {/* Geometric overlay */}
-                      <div className="absolute inset-0 bg-secession-black/10 mix-blend-multiply pointer-events-none"></div>
+                      <div className="absolute inset-0 bg-cream/10 mix-blend-multiply pointer-events-none"></div>
                       <div className="absolute top-4 left-4 w-12 h-12 border-t-2 border-l-2 border-cream/50 pointer-events-none"></div>
                       <div className="absolute bottom-4 right-4 w-12 h-12 border-b-2 border-r-2 border-cream/50 pointer-events-none"></div>
                     </div>
@@ -1520,11 +1631,11 @@ const App: React.FC = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[100] flex items-center justify-center bg-secession-black/95 backdrop-blur-xl p-4 md:p-12 overflow-y-auto"
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-cream/95 backdrop-blur-xl p-4 md:p-12 overflow-y-auto"
             onClick={() => setSelectedConcertId(null)}
           >
             <button 
-              className="fixed top-6 right-6 text-cream hover:text-vienna-gold transition-colors z-[110]"
+              className="fixed top-6 right-6 text-secession-black hover:text-vienna-gold transition-colors z-[110]"
               onClick={() => setSelectedConcertId(null)}
             >
               <X className="w-10 h-10" />
@@ -1553,19 +1664,19 @@ const App: React.FC = () => {
                             className="absolute inset-0 w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
                           />
                           {concert.images.length > 1 && (
-                            <div className="absolute bottom-0 left-0 right-0 flex gap-2 p-4 bg-gradient-to-t from-secession-black/80 to-transparent">
+                            <div className="absolute bottom-0 left-0 right-0 flex gap-2 p-4 bg-gradient-to-t from-cream/90 to-transparent">
                               {concert.images.slice(1).map((img, idx) => (
-                                <img key={idx} src={img} alt="" referrerPolicy="no-referrer" className="w-20 h-20 object-cover border border-cream/30 hover:border-vienna-gold transition-colors" />
+                                <img key={idx} src={img} alt="" referrerPolicy="no-referrer" className="w-20 h-20 object-cover border border-secession-black/30 hover:border-vienna-gold transition-colors" />
                               ))}
                             </div>
                           )}
                           {/* Geometric overlay */}
                           <div className="absolute inset-0 bg-secession-black/10 mix-blend-multiply pointer-events-none"></div>
-                          <div className="absolute top-4 left-4 w-12 h-12 border-t-2 border-l-2 border-cream/50 pointer-events-none"></div>
-                          <div className="absolute bottom-4 right-4 w-12 h-12 border-b-2 border-r-2 border-cream/50 pointer-events-none"></div>
+                          <div className="absolute top-4 left-4 w-12 h-12 border-t-2 border-l-2 border-secession-black/50 pointer-events-none"></div>
+                          <div className="absolute bottom-4 right-4 w-12 h-12 border-b-2 border-r-2 border-secession-black/50 pointer-events-none"></div>
                         </div>
                       ) : (
-                        <div className="relative flex-1 min-h-[300px] md:min-h-full bg-secession-black/5 flex items-center justify-center">
+                        <div className="relative flex-1 min-h-[300px] md:min-h-full bg-cream/5 flex items-center justify-center">
                           <SecessionOrnament className="opacity-20" />
                         </div>
                       )}
