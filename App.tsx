@@ -341,7 +341,7 @@ const AWARDS_AND_PRESS = [
 ];
 
 const Imprint = ({ t }: { t: any }) => (
-  <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="pt-24 pb-16 md:pt-32 md:pb-24 px-6 md:px-12 max-w-4xl mx-auto min-h-screen">
+  <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="pt-24 pb-16 md:pt-32 md:pb-24 px-6 md:px-12 max-w-4xl mx-auto min-h-[100dvh]">
     <SecessionFrame className="p-8 md:p-16 bg-cream">
       <h1 className="text-4xl md:text-7xl font-serif mb-6 md:mb-10 text-secession-black italic text-center">{t.imprint.title}</h1>
       <SecessionOrnament className="mb-10" />
@@ -380,7 +380,7 @@ const Imprint = ({ t }: { t: any }) => (
 );
 
 const PrivacyPolicy = ({ t }: { t: any }) => (
-  <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="pt-24 pb-16 md:pt-32 md:pb-24 px-6 md:px-12 max-w-4xl mx-auto min-h-screen">
+  <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="pt-24 pb-16 md:pt-32 md:pb-24 px-6 md:px-12 max-w-4xl mx-auto min-h-[100dvh]">
     <SecessionFrame className="p-8 md:p-16 bg-cream">
       <h1 className="text-4xl md:text-7xl font-serif mb-6 md:mb-10 text-secession-black italic text-center">{t.privacy.title}</h1>
       <SecessionOrnament className="mb-10" />
@@ -456,9 +456,8 @@ const TheatreCurtain = ({ onComplete }: { onComplete: () => void }) => {
   );
 };
 
-const CinematicBackground = () => {
-  const isMobile = typeof window !== 'undefined' && window.matchMedia('(max-width: 768px)').matches;
-  const particleCount = isMobile ? 15 : 40;
+const CinematicBackground = ({ isMobile }: { isMobile: boolean }) => {
+  const particleCount = isMobile ? 10 : 40;
   
   // Generate random particles for a dust effect
   const particles = Array.from({ length: particleCount }).map((_, i) => ({
@@ -468,7 +467,7 @@ const CinematicBackground = () => {
     top: `${Math.random() * 100}%`,
     duration: Math.random() * 20 + 20,
     delay: Math.random() * -20,
-    blur: Math.random() * 3,
+    blur: isMobile ? 0 : Math.random() * 3,
   }));
 
   return (
@@ -481,39 +480,45 @@ const CinematicBackground = () => {
       
       {/* Cinematic Classic Elements */}
       
-      {/* Music Staffs Overlay */}
-      <div className="absolute inset-0 opacity-[0.03] md:opacity-[0.015] mix-blend-multiply overflow-hidden pointer-events-none origin-bottom-left -rotate-6 scale-125 z-0">
-        <div className="absolute top-[20%] left-0 right-0 h-40 flex flex-col justify-between">
-          {[1,2,3,4,5].map(i => <div key={i} className="w-full h-px bg-secession-black" />)}
+      {/* Music Staffs Overlay - Removed from mobile for performance */}
+      {!isMobile && (
+        <div className="absolute inset-0 opacity-[0.03] md:opacity-[0.015] mix-blend-multiply overflow-hidden pointer-events-none origin-bottom-left -rotate-6 scale-125 z-0">
+          <div className="absolute top-[20%] left-0 right-0 h-40 flex flex-col justify-between">
+            {[1,2,3,4,5].map(i => <div key={i} className="w-full h-px bg-secession-black" />)}
+          </div>
         </div>
-      </div>
-      <div className="absolute inset-0 opacity-[0.02] md:opacity-[0.01] mix-blend-multiply overflow-hidden pointer-events-none origin-top-right rotate-[12deg] scale-150 z-0">
-        <div className="absolute top-[60%] left-0 right-0 h-32 flex flex-col justify-between">
-          {[1,2,3,4,5].map(i => <div key={i} className="w-full h-px bg-secession-black" />)}
+      )}
+      {!isMobile && (
+        <div className="absolute inset-0 opacity-[0.02] md:opacity-[0.01] mix-blend-multiply overflow-hidden pointer-events-none origin-top-right rotate-[12deg] scale-150 z-0">
+          <div className="absolute top-[60%] left-0 right-0 h-32 flex flex-col justify-between">
+            {[1,2,3,4,5].map(i => <div key={i} className="w-full h-px bg-secession-black" />)}
+          </div>
         </div>
-      </div>
+      )}
 
       {/* Cello Strings */}
-      <div className="absolute inset-0 opacity-[0.03] mix-blend-multiply flex justify-center gap-[8vw] md:gap-[4vw] z-0 overflow-hidden perspective-[1000px]">
-        {[1, 2, 3, 4].map((string) => (
-          <motion.div
-            key={`string-${string}`}
-            className="h-[200%] w-[1px] md:w-[2px] bg-secession-black -mt-[50%]"
-            animate={{
-              x: [0, (Math.random() > 0.5 ? 1 : -1) * 2, 0],
-              opacity: [0.3, 0.8, 0.3]
-            }}
-            transition={{
-              duration: 0.15 + (Math.random() * 0.1),
-              repeat: Infinity,
-              ease: "easeInOut",
-              delay: Math.random() * 2
-            }}
-          />
-        ))}
-      </div>
+      {!isMobile && (
+        <div className="absolute inset-0 opacity-[0.03] mix-blend-multiply flex justify-center gap-[8vw] md:gap-[4vw] z-0 overflow-hidden perspective-[1000px]">
+          {[1, 2, 3, 4].map((string) => (
+            <motion.div
+              key={`string-${string}`}
+              className="h-[200%] w-[1px] md:w-[2px] bg-secession-black -mt-[50%]"
+              animate={{
+                x: [0, (Math.random() > 0.5 ? 1 : -1) * 2, 0],
+                opacity: [0.3, 0.8, 0.3]
+              }}
+              transition={{
+                duration: 0.15 + (Math.random() * 0.1),
+                repeat: Infinity,
+                ease: "easeInOut",
+                delay: Math.random() * 2
+              }}
+            />
+          ))}
+        </div>
+      )}
 
-      <div className="absolute inset-0 opacity-60 mix-blend-overlay z-0">
+      <div className={`absolute inset-0 opacity-60 z-0 ${isMobile ? '' : 'mix-blend-overlay'}`}>
         {particles.map((p) => (
           <motion.div
             key={p.id}
@@ -524,8 +529,8 @@ const CinematicBackground = () => {
               left: p.left,
               top: p.top,
               opacity: 0,
-              filter: `blur(${p.blur}px)`,
-              boxShadow: `0 0 ${p.size * 3}px rgba(212, 175, 55, 0.6)`
+              filter: isMobile ? 'none' : `blur(${p.blur}px)`,
+              boxShadow: isMobile ? 'none' : `0 0 ${p.size * 3}px rgba(212, 175, 55, 0.6)`
             }}
             animate={{
               y: [0, -100, -200],
@@ -543,92 +548,98 @@ const CinematicBackground = () => {
       </div>
 
       {/* Abstract Sound Waves / Cello Resonance */}
-      <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden opacity-[0.25] md:opacity-[0.15]">
-        <svg viewBox="0 0 100 100" preserveAspectRatio="none" className="w-full h-full">
-          <motion.path
-            stroke="#D4AF37"
-            strokeWidth="0.3"
-            fill="none"
-            vectorEffect="non-scaling-stroke"
-            animate={{
-              d: [
-                "M -10 40 Q 30 10, 60 60 T 110 50",
-                "M -10 60 Q 40 80, 70 30 T 110 40",
-                "M -10 40 Q 30 10, 60 60 T 110 50"
-              ]
-            }}
-            transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }}
-          />
-          <motion.path
-            stroke="#1a1a1a"
-            strokeWidth="0.1"
-            fill="none"
-            vectorEffect="non-scaling-stroke"
-            animate={{
-              d: [
-                "M -10 60 Q 40 90, 80 40 T 110 70",
-                "M -10 40 Q 50 10, 70 70 T 110 50",
-                "M -10 60 Q 40 90, 80 40 T 110 70"
-              ]
-            }}
-            transition={{ duration: 30, repeat: Infinity, ease: "easeInOut", delay: 5 }}
-          />
-          <motion.path
-            stroke="#D4AF37"
-            strokeWidth="0.15"
-            fill="none"
-            vectorEffect="non-scaling-stroke"
-            animate={{
-              d: [
-                "M -10 20 Q 50 60, 80 10 T 110 30",
-                "M -10 30 Q 30 0, 70 50 T 110 20",
-                "M -10 20 Q 50 60, 80 10 T 110 30"
-              ]
-            }}
-            transition={{ duration: 35, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-          />
-        </svg>
-      </div>
+      {!isMobile && (
+        <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden opacity-[0.25] md:opacity-[0.15]">
+          <svg viewBox="0 0 100 100" preserveAspectRatio="none" className="w-full h-full">
+            <motion.path
+              stroke="#D4AF37"
+              strokeWidth="0.3"
+              fill="none"
+              vectorEffect="non-scaling-stroke"
+              animate={{
+                d: [
+                  "M -10 40 Q 30 10, 60 60 T 110 50",
+                  "M -10 60 Q 40 80, 70 30 T 110 40",
+                  "M -10 40 Q 30 10, 60 60 T 110 50"
+                ]
+              }}
+              transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }}
+            />
+            <motion.path
+              stroke="#1a1a1a"
+              strokeWidth="0.1"
+              fill="none"
+              vectorEffect="non-scaling-stroke"
+              animate={{
+                d: [
+                  "M -10 60 Q 40 90, 80 40 T 110 70",
+                  "M -10 40 Q 50 10, 70 70 T 110 50",
+                  "M -10 60 Q 40 90, 80 40 T 110 70"
+                ]
+              }}
+              transition={{ duration: 30, repeat: Infinity, ease: "easeInOut", delay: 5 }}
+            />
+            <motion.path
+              stroke="#D4AF37"
+              strokeWidth="0.15"
+              fill="none"
+              vectorEffect="non-scaling-stroke"
+              animate={{
+                d: [
+                  "M -10 20 Q 50 60, 80 10 T 110 30",
+                  "M -10 30 Q 30 0, 70 50 T 110 20",
+                  "M -10 20 Q 50 60, 80 10 T 110 30"
+                ]
+              }}
+              transition={{ duration: 35, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+            />
+          </svg>
+        </div>
+      )}
 
       {/* Deep Cello Resonance Lights */}
-      <motion.div 
-        className="absolute top-[-10%] right-[10%] w-[60vw] h-[50vh] bg-vienna-gold/30 blur-[80px] md:blur-[120px] origin-top-right mix-blend-color-burn rounded-full"
-        animate={{
-          opacity: [0.4, 0.8, 0.4],
-          scale: [1, 1.15, 1],
-          x: [0, -20, 0],
-          rotate: [0, 5, 0]
-        }}
-        transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
-      />
-      <motion.div 
-        className="absolute bottom-[-10%] left-[5%] w-[70vw] h-[60vh] bg-[#8B4513]/20 blur-[100px] md:blur-[150px] origin-bottom-left mix-blend-color-burn rounded-full"
-        animate={{
-          opacity: [0.3, 0.7, 0.3],
-          scale: [1, 1.25, 1],
-          x: [0, 30, 0],
-          rotate: [0, -5, 0]
-        }}
-        transition={{ duration: 20, repeat: Infinity, ease: "easeInOut", delay: 3 }}
-      />
-      <motion.div 
-        className="absolute top-[30%] left-[20%] w-[50vw] h-[40vh] bg-[#D4AF37]/15 blur-[80px] md:blur-[100px] mix-blend-overlay rounded-full"
-        animate={{
-          opacity: [0.4, 0.8, 0.4],
-          scale: [0.8, 1.2, 0.8],
-          y: [0, -40, 0]
-        }}
-        transition={{ duration: 18, repeat: Infinity, ease: "easeInOut", delay: 7 }}
-      />
+      {!isMobile && (
+        <>
+          <motion.div 
+            className="absolute top-[-10%] right-[10%] w-[60vw] h-[50vh] bg-vienna-gold/30 blur-[80px] md:blur-[120px] origin-top-right mix-blend-color-burn rounded-full"
+            animate={{
+              opacity: [0.4, 0.8, 0.4],
+              scale: [1, 1.15, 1],
+              x: [0, -20, 0],
+              rotate: [0, 5, 0]
+            }}
+            transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+          />
+          <motion.div 
+            className="absolute bottom-[-10%] left-[5%] w-[70vw] h-[60vh] bg-[#8B4513]/20 blur-[100px] md:blur-[150px] origin-bottom-left mix-blend-color-burn rounded-full"
+            animate={{
+              opacity: [0.3, 0.7, 0.3],
+              scale: [1, 1.25, 1],
+              x: [0, 30, 0],
+              rotate: [0, -5, 0]
+            }}
+            transition={{ duration: 20, repeat: Infinity, ease: "easeInOut", delay: 3 }}
+          />
+          <motion.div 
+            className="absolute top-[30%] left-[20%] w-[50vw] h-[40vh] bg-[#D4AF37]/15 blur-[80px] md:blur-[100px] mix-blend-overlay rounded-full"
+            animate={{
+              opacity: [0.4, 0.8, 0.4],
+              scale: [0.8, 1.2, 0.8],
+              y: [0, -40, 0]
+            }}
+            transition={{ duration: 18, repeat: Infinity, ease: "easeInOut", delay: 7 }}
+          />
+        </>
+      )}
 
       {/* Varnished Wood Reflection */}
       <motion.div
-        className="absolute inset-0 opacity-[0.4] mix-blend-overlay z-0 pointer-events-none"
+        className="absolute inset-0 opacity-[0.2] md:opacity-[0.4] mix-blend-overlay z-0 pointer-events-none"
         style={{
           background: 'linear-gradient(135deg, transparent 0%, rgba(212, 175, 55, 0.4) 50%, transparent 100%)',
           backgroundSize: '200% 200%'
         }}
-        animate={{
+        animate={isMobile ? {} : {
           backgroundPosition: ['0% 0%', '100% 100%', '0% 0%']
         }}
         transition={{
@@ -842,14 +853,14 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen overflow-x-hidden bg-cream text-secession-black font-sans selection:bg-vienna-gold selection:text-cream relative">
-      <CinematicBackground />
+    <div className="min-h-[100dvh] overflow-x-hidden bg-cream text-secession-black font-sans selection:bg-vienna-gold selection:text-cream relative">
+      <CinematicBackground isMobile={isMobile} />
       <AnimatePresence>
         {showCurtain && <TheatreCurtain onComplete={() => setShowCurtain(false)} />}
       </AnimatePresence>
-      <CustomCursor />
+      {!isMobile && <CustomCursor />}
       <div className="bg-noise" />
-      <InstrumentalScrollbar />
+      {!isMobile && <InstrumentalScrollbar />}
       
       {/* Navigation */}
       <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled ? 'bg-cream/95 backdrop-blur-md border-b border-secession-black/10 py-3' : 'bg-transparent py-6'}`}>
@@ -971,10 +982,10 @@ const App: React.FC = () => {
             transition={{ duration: 0.5 }}
           >
             {/* HERO SECTION */}
-            <header className="relative min-h-screen flex items-center justify-center overflow-hidden bg-transparent pt-16 sm:pt-20 px-4 sm:px-6 z-10">
+            <header className="relative min-h-[100dvh] flex items-center justify-center overflow-hidden bg-transparent pt-16 sm:pt-20 px-4 sm:px-6 z-10">
           {/* Huge background text */}
           <motion.div 
-            style={{ y: wienY, opacity: wienOpacity, scale: wienScale }}
+            style={isMobile ? { opacity: wienOpacity } : { y: wienY, opacity: wienOpacity, scale: wienScale }}
             className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[25vw] font-serif font-bold text-secession-black whitespace-nowrap pointer-events-none select-none"
           >
             WIEN
@@ -1032,7 +1043,7 @@ const App: React.FC = () => {
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
-              style={{ y: heroImageY, scale: heroImageScale, rotate: heroImageRotate }}
+              style={isMobile ? {} : { y: heroImageY, scale: heroImageScale, rotate: heroImageRotate }}
               transition={{ duration: 1.5, delay: 0.6, ease: "easeOut" }}
               className="relative w-full h-[65vh] sm:h-[60vh] md:h-[70vh] lg:h-[85vh] mt-6 lg:mt-0 max-w-lg sm:max-w-xl mx-auto lg:max-w-none lg:col-span-7"
             >
@@ -1110,22 +1121,22 @@ const App: React.FC = () => {
                     ref={bioRef}
                     className="space-y-4 md:space-y-6 text-secession-black/80 leading-relaxed text-base md:text-lg font-medium"
                   >
-                    <motion.p style={{ opacity: p1Opacity, y: p1Y, filter: p1Blur }}>
+                    <motion.p style={isMobile ? { opacity: p1Opacity, y: p1Y } : { opacity: p1Opacity, y: p1Y, filter: p1Blur }}>
                       {t.biography.text1}
                     </motion.p>
-                    <motion.p style={{ opacity: p2Opacity, y: p2Y, filter: p2Blur }}>
+                    <motion.p style={isMobile ? { opacity: p2Opacity, y: p2Y } : { opacity: p2Opacity, y: p2Y, filter: p2Blur }}>
                       {t.biography.text2}
                     </motion.p>
-                    <motion.p style={{ opacity: p3Opacity, y: p3Y, filter: p3Blur }}>
+                    <motion.p style={isMobile ? { opacity: p3Opacity, y: p3Y } : { opacity: p3Opacity, y: p3Y, filter: p3Blur }}>
                       {t.biography.text3}
                     </motion.p>
-                    <motion.p style={{ opacity: p4Opacity, y: p4Y, filter: p4Blur }}>
+                    <motion.p style={isMobile ? { opacity: p4Opacity, y: p4Y } : { opacity: p4Opacity, y: p4Y, filter: p4Blur }}>
                       {t.biography.text4}
                     </motion.p>
-                    <motion.p style={{ opacity: p5Opacity, y: p5Y, filter: p5Blur }}>
+                    <motion.p style={isMobile ? { opacity: p5Opacity, y: p5Y } : { opacity: p5Opacity, y: p5Y, filter: p5Blur }}>
                       {t.biography.text5}
                     </motion.p>
-                    <motion.p style={{ opacity: p6Opacity, y: p6Y, filter: p6Blur }}>
+                    <motion.p style={isMobile ? { opacity: p6Opacity, y: p6Y } : { opacity: p6Opacity, y: p6Y, filter: p6Blur }}>
                       {t.biography.text6}
                     </motion.p>
                   </motion.div>
@@ -1436,7 +1447,7 @@ const App: React.FC = () => {
             animate={{ opacity: 1, y: 0 }} 
             exit={{ opacity: 0, y: -20 }} 
             transition={{ duration: 0.5 }}
-            className="pt-24 pb-16 md:pt-32 md:pb-24 px-6 md:px-12 max-w-5xl mx-auto min-h-screen"
+            className="pt-24 pb-16 md:pt-32 md:pb-24 px-6 md:px-12 max-w-5xl mx-auto min-h-[100dvh]"
           >
             <button 
               onClick={() => { setCurrentPage('home'); setSelectedRecordingId(null); window.scrollTo(0, 0); }}
