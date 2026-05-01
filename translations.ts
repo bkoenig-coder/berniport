@@ -13,6 +13,8 @@ export const translations = {
     },
     hero: {
       cellist: 'Cellistin',
+      title1: 'Cellosolistin',
+      title2: '& Kammermusikerin',
       vienna: 'Wien',
       discover: 'Entdecken',
       quote: '"Ein Ton von reinem Bernstein und eine interpretatorische Tiefe, die über ihre Jahre hinausgeht."',
@@ -23,12 +25,14 @@ export const translations = {
       title: 'Biografie',
       readMore: 'Mehr lesen',
       text1: 'Bernadette König (* 2003) entstammt einer Musikerfamilie und begann im Alter von sieben Jahren, Cello zu spielen. Bereits in jungen Jahren trat sie regelmäßig an renommierten Spielstätten wie der Orangerie von Schloss Schönbrunn und im Wiener Rathaus auf.',
-      text2: 'Mit elf Jahren wurde sie in das Hochbegabtenprogramm der Musik und Kunst Privatuniversität der Stadt Wien (MUK) aufgenommen, wo sie bei Prof. Lilia Schulz-Bayrova studierte. Seit 2015 vertieft sie kontinuierlich ihre kammermusikalische Tätigkeit und arbeitete dabei mit Künstlern wie Evgeny Sinaisky, Christoph Eggner und Matt Hunt zusammen.',
+      text2: 'Mit elf Jahren wurde sie in das Hochbegabtenprogramm der MUSIK UND KUNST PRIVATUNIVERSITÄT WIEN (MUK) aufgenommen, wo sie bei Prof. Lilia Schulz-Bayrova studierte. Seit 2015 vertieft sie kontinuierlich ihre kammermusikalische Tätigkeit und arbeitete dabei mit Künstlern wie Evgeny Sinaisky, Christoph Eggner und Matt Hunt zusammen.',
       text3: 'Neben ihrer intensiven kammermusikalischen Tätigkeit verfügt sie über umfangreiche Orchestererfahrung und konzertierte in bedeutenden Sälen wie dem Goldenen Saal des Wiener Musikvereins, dem Radiokulturhaus, dem Theater an der Wien sowie im Rahmen der OPEC-Kongressgala in der Wiener Hofburg.',
       text4: 'Als mehrfache Erste-Preisträgerin des österreichischen Bundeswettbewerbs „Prima la Musica” wurde sie sowohl in der Solo- als auch in der Kammermusikkategorie in den Jahren 2015 und 2018 ausgezeichnet.',
       text5: 'Weitere künstlerische Impulse erhielt sie in Meisterkursen bei renommierten Persönlichkeiten wie Steven Isserlis, Harriet Krijgh, Jeremias Fliedl und Eldar Saparajev.',
-      text6: 'Ihr Bachelorstudium absolvierte sie an der Musik und Kunst Privatuniversität der Stadt Wien (MUK), wo sie für ihre herausragenden künstlerischen und akademischen Leistungen mit einem Leistungsstipendium gewürdigt wurde. Im Rahmen ihres Studiums verbrachte sie ein Erasmus+ Auslandssemester an der Folkwang Universität der Künste in Deutschland bei Prof. Christoph Richter. Seit 2025 setzt sie ihr Studium im Masterprogramm an der MUK bei Prof. Lilia Schulz-Bayrova fort.',
-      downloadCV: 'Vollständigen Lebenslauf herunterladen'
+      text6: 'Ihr Bachelorstudium absolvierte sie an der MUSIK UND KUNST PRIVATUNIVERSITÄT WIEN (MUK), wo sie für ihre herausragenden künstlerischen und akademischen Leistungen mit einem Leistungsstipendium gewürdigt wurde. Im Rahmen ihres Studiums verbrachte sie ein Erasmus+ Auslandssemester an der Folkwang Universität der Künste in Deutschland bei Prof. Christoph Richter. Seit 2025 setzt sie ihr Studium im Masterprogramm an der MUK bei Prof. Lilia Schulz-Bayrova fort.',
+      downloadCV: 'Vollständigen Lebenslauf herunterladen',
+      caption1: 'Bernadette König mit ihrer Professorin Univ. Prof. Mag. Lilia Schulz-Bayrova.',
+      caption2: 'Bernadette König an der MUSIK UND KUNST PRIVATUNIVERSITÄT WIEN nach ihrer erfolgreichen Bachelorprüfung.'
     },
     awards: {
       title: 'Auszeichnungen',
@@ -104,6 +108,8 @@ export const translations = {
     },
     hero: {
       cellist: 'Cellist',
+      title1: 'Cello Soloist',
+      title2: '& Chamber Musician',
       vienna: 'Vienna',
       discover: 'Discover',
       quote: '"A tone of pure amber and an interpretive depth that transcends her years."',
@@ -114,12 +120,14 @@ export const translations = {
       title: 'Biography',
       readMore: 'Read more',
       text1: 'Bernadette König (* 2003) comes from a family of musicians and began playing the cello at the age of seven. Even at a young age, she regularly performed at renowned venues such as the Orangery at Schönbrunn Palace and the Vienna City Hall.',
-      text2: 'At the age of eleven, she was accepted into the program for highly gifted students at the Music and Arts University of the City of Vienna (MUK), where she studied with Prof. Lilia Schulz-Bayrova. Since 2015, she has continuously deepened her chamber music activities, collaborating with artists such as Evgeny Sinaisky, Christoph Eggner, and Matt Hunt.',
+      text2: 'At the age of eleven, she was accepted into the program for highly gifted students at the MUSIK UND KUNST PRIVATUNIVERSITÄT WIEN (MUK), where she studied with Prof. Lilia Schulz-Bayrova. Since 2015, she has continuously deepened her chamber music activities, collaborating with artists such as Evgeny Sinaisky, Christoph Eggner, and Matt Hunt.',
       text3: 'In addition to her intensive chamber music activities, she has extensive orchestral experience and has performed in major halls such as the Golden Hall of the Vienna Musikverein, the Radiokulturhaus, the Theater an der Wien, and as part of the OPEC Congress Gala at the Vienna Hofburg.',
       text4: 'As a multiple first-prize winner of the Austrian national competition "Prima la Musica," she was awarded in both the solo and chamber music categories in 2015 and 2018.',
       text5: 'She received further artistic impulses in masterclasses with renowned personalities such as Steven Isserlis, Harriet Krijgh, Jeremias Fliedl, and Eldar Saparajev.',
-      text6: 'She completed her bachelor\'s degree at the Music and Arts University of the City of Vienna (MUK), where she was honored with a merit scholarship for her outstanding artistic and academic achievements. As part of her studies, she spent an Erasmus+ semester abroad at the Folkwang University of the Arts in Germany with Prof. Christoph Richter. Since 2025, she has been continuing her studies in the master\'s program at the MUK with Prof. Lilia Schulz-Bayrova.',
-      downloadCV: 'Download Full CV'
+      text6: 'She completed her bachelor\'s degree at the MUSIK UND KUNST PRIVATUNIVERSITÄT WIEN (MUK), where she was honored with a merit scholarship for her outstanding artistic and academic achievements. As part of her studies, she spent an Erasmus+ semester abroad at the Folkwang University of the Arts in Germany with Prof. Christoph Richter. Since 2025, she has been continuing her studies in the master\'s program at the MUK with Prof. Lilia Schulz-Bayrova.',
+      downloadCV: 'Download Full CV',
+      caption1: 'Bernadette König with her prof -Univ. Prof. Mag. Lilia Schulz-Bayrova',
+      caption2: 'Bernadette König at the MUSIK UND KUNST PRIVATUNIVERSITÄT WIEN after her successful bachelor exam'
     },
     awards: {
       title: 'Awards',

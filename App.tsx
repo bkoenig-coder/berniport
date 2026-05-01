@@ -56,6 +56,10 @@ const CustomCursor = () => {
   const [isHovering, setIsHovering] = useState(false);
 
   useEffect(() => {
+    if (window.matchMedia('(pointer: coarse)').matches) {
+      return;
+    }
+    
     const updateMousePosition = (e: MouseEvent) => {
       setMousePosition({ x: e.clientX, y: e.clientY });
     };
@@ -453,14 +457,18 @@ const TheatreCurtain = ({ onComplete }: { onComplete: () => void }) => {
 };
 
 const CinematicBackground = () => {
+  const isMobile = typeof window !== 'undefined' && window.matchMedia('(max-width: 768px)').matches;
+  const particleCount = isMobile ? 15 : 40;
+  
   // Generate random particles for a dust effect
-  const particles = Array.from({ length: 40 }).map((_, i) => ({
+  const particles = Array.from({ length: particleCount }).map((_, i) => ({
     id: i,
     size: Math.random() * 2 + 1,
     left: `${Math.random() * 100}%`,
     top: `${Math.random() * 100}%`,
     duration: Math.random() * 20 + 20,
     delay: Math.random() * -20,
+    blur: Math.random() * 3,
   }));
 
   return (
@@ -471,22 +479,58 @@ const CinematicBackground = () => {
       {/* Heavy Vignette */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.6)_100%)] z-10 pointer-events-none mix-blend-multiply" />
       
-      <div className="absolute inset-0 opacity-40 mix-blend-screen z-0">
+      {/* Cinematic Classic Elements */}
+      
+      {/* Music Staffs Overlay */}
+      <div className="absolute inset-0 opacity-[0.03] md:opacity-[0.015] mix-blend-multiply overflow-hidden pointer-events-none origin-bottom-left -rotate-6 scale-125 z-0">
+        <div className="absolute top-[20%] left-0 right-0 h-40 flex flex-col justify-between">
+          {[1,2,3,4,5].map(i => <div key={i} className="w-full h-px bg-secession-black" />)}
+        </div>
+      </div>
+      <div className="absolute inset-0 opacity-[0.02] md:opacity-[0.01] mix-blend-multiply overflow-hidden pointer-events-none origin-top-right rotate-[12deg] scale-150 z-0">
+        <div className="absolute top-[60%] left-0 right-0 h-32 flex flex-col justify-between">
+          {[1,2,3,4,5].map(i => <div key={i} className="w-full h-px bg-secession-black" />)}
+        </div>
+      </div>
+
+      {/* Cello Strings */}
+      <div className="absolute inset-0 opacity-[0.03] mix-blend-multiply flex justify-center gap-[8vw] md:gap-[4vw] z-0 overflow-hidden perspective-[1000px]">
+        {[1, 2, 3, 4].map((string) => (
+          <motion.div
+            key={`string-${string}`}
+            className="h-[200%] w-[1px] md:w-[2px] bg-secession-black -mt-[50%]"
+            animate={{
+              x: [0, (Math.random() > 0.5 ? 1 : -1) * 2, 0],
+              opacity: [0.3, 0.8, 0.3]
+            }}
+            transition={{
+              duration: 0.15 + (Math.random() * 0.1),
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: Math.random() * 2
+            }}
+          />
+        ))}
+      </div>
+
+      <div className="absolute inset-0 opacity-60 mix-blend-overlay z-0">
         {particles.map((p) => (
           <motion.div
             key={p.id}
-            className="absolute rounded-full bg-secession-black blur-[1px]"
+            className="absolute rounded-full bg-vienna-gold"
             style={{
-              width: p.size,
-              height: p.size,
+              width: p.size * 1.5,
+              height: p.size * 1.5,
               left: p.left,
               top: p.top,
-              opacity: 0
+              opacity: 0,
+              filter: `blur(${p.blur}px)`,
+              boxShadow: `0 0 ${p.size * 3}px rgba(212, 175, 55, 0.6)`
             }}
             animate={{
               y: [0, -100, -200],
-              x: [0, Math.random() * 40 - 20, Math.random() * 40 - 20],
-              opacity: [0, 0.4, 0]
+              x: [0, Math.random() * 50 - 25, Math.random() * 50 - 25],
+              opacity: [0, 0.8, 0]
             }}
             transition={{
               duration: p.duration,
@@ -498,31 +542,99 @@ const CinematicBackground = () => {
         ))}
       </div>
 
-      {/* Cinematic light leak 1 */}
+      {/* Abstract Sound Waves / Cello Resonance */}
+      <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden opacity-[0.25] md:opacity-[0.15]">
+        <svg viewBox="0 0 100 100" preserveAspectRatio="none" className="w-full h-full">
+          <motion.path
+            stroke="#D4AF37"
+            strokeWidth="0.3"
+            fill="none"
+            vectorEffect="non-scaling-stroke"
+            animate={{
+              d: [
+                "M -10 40 Q 30 10, 60 60 T 110 50",
+                "M -10 60 Q 40 80, 70 30 T 110 40",
+                "M -10 40 Q 30 10, 60 60 T 110 50"
+              ]
+            }}
+            transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }}
+          />
+          <motion.path
+            stroke="#1a1a1a"
+            strokeWidth="0.1"
+            fill="none"
+            vectorEffect="non-scaling-stroke"
+            animate={{
+              d: [
+                "M -10 60 Q 40 90, 80 40 T 110 70",
+                "M -10 40 Q 50 10, 70 70 T 110 50",
+                "M -10 60 Q 40 90, 80 40 T 110 70"
+              ]
+            }}
+            transition={{ duration: 30, repeat: Infinity, ease: "easeInOut", delay: 5 }}
+          />
+          <motion.path
+            stroke="#D4AF37"
+            strokeWidth="0.15"
+            fill="none"
+            vectorEffect="non-scaling-stroke"
+            animate={{
+              d: [
+                "M -10 20 Q 50 60, 80 10 T 110 30",
+                "M -10 30 Q 30 0, 70 50 T 110 20",
+                "M -10 20 Q 50 60, 80 10 T 110 30"
+              ]
+            }}
+            transition={{ duration: 35, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+          />
+        </svg>
+      </div>
+
+      {/* Deep Cello Resonance Lights */}
       <motion.div 
-        className="absolute top-[-10%] right-[10%] w-[50vw] h-[30vh] bg-vienna-gold/5 blur-[80px] origin-top-right mix-blend-screen rounded-full"
+        className="absolute top-[-10%] right-[10%] w-[60vw] h-[50vh] bg-vienna-gold/30 blur-[80px] md:blur-[120px] origin-top-right mix-blend-color-burn rounded-full"
         animate={{
-          opacity: [0.1, 0.3, 0.1],
-          scale: [1, 1.1, 1],
+          opacity: [0.4, 0.8, 0.4],
+          scale: [1, 1.15, 1],
+          x: [0, -20, 0],
+          rotate: [0, 5, 0]
         }}
-        transition={{
-          duration: 12,
-          repeat: Infinity,
-          ease: "easeInOut"
-        }}
+        transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
       />
-      
-      {/* Cinematic light leak 2 */}
       <motion.div 
-        className="absolute bottom-[-10%] left-[10%] w-[40vw] h-[40vh] bg-vienna-gold/5 blur-[100px] origin-bottom-left mix-blend-screen rounded-full"
+        className="absolute bottom-[-10%] left-[5%] w-[70vw] h-[60vh] bg-[#8B4513]/20 blur-[100px] md:blur-[150px] origin-bottom-left mix-blend-color-burn rounded-full"
         animate={{
-          opacity: [0.05, 0.2, 0.05],
-          scale: [1, 1.2, 1],
+          opacity: [0.3, 0.7, 0.3],
+          scale: [1, 1.25, 1],
+          x: [0, 30, 0],
+          rotate: [0, -5, 0]
+        }}
+        transition={{ duration: 20, repeat: Infinity, ease: "easeInOut", delay: 3 }}
+      />
+      <motion.div 
+        className="absolute top-[30%] left-[20%] w-[50vw] h-[40vh] bg-[#D4AF37]/15 blur-[80px] md:blur-[100px] mix-blend-overlay rounded-full"
+        animate={{
+          opacity: [0.4, 0.8, 0.4],
+          scale: [0.8, 1.2, 0.8],
+          y: [0, -40, 0]
+        }}
+        transition={{ duration: 18, repeat: Infinity, ease: "easeInOut", delay: 7 }}
+      />
+
+      {/* Varnished Wood Reflection */}
+      <motion.div
+        className="absolute inset-0 opacity-[0.4] mix-blend-overlay z-0 pointer-events-none"
+        style={{
+          background: 'linear-gradient(135deg, transparent 0%, rgba(212, 175, 55, 0.4) 50%, transparent 100%)',
+          backgroundSize: '200% 200%'
+        }}
+        animate={{
+          backgroundPosition: ['0% 0%', '100% 100%', '0% 0%']
         }}
         transition={{
-          duration: 18,
-          repeat: Infinity,
-          ease: "easeInOut"
+          duration: 25,
+          ease: "linear",
+          repeat: Infinity
         }}
       />
     </div>
@@ -545,6 +657,13 @@ const TheatreLight = () => {
         {/* The Wire */}
         <div className="w-[1px] h-12 md:h-20 bg-vienna-gold/30" />
         
+        {/* Cinematic Lens Flare */}
+        <div className="absolute top-12 md:top-20 flex justify-center items-center pointer-events-none mix-blend-screen scale-150 md:scale-[2] z-20">
+          <motion.div variants={{ hidden: { opacity: 0, scaleX: 0 }, visible: { opacity: 1, scaleX: 1, transition: { duration: 2, delay: 0.5, ease: "easeOut" } } }} className="absolute w-[30vw] h-[1px] bg-vienna-gold/20 blur-[1px] -rotate-6" />
+          <motion.div variants={{ hidden: { opacity: 0, scaleX: 0 }, visible: { opacity: 1, scaleX: 1, transition: { duration: 1.5, delay: 0.8, ease: "easeOut" } } }} className="absolute w-[15vw] h-[1px] bg-vienna-gold/40 blur-[0.5px] rotate-3" />
+          <div className="absolute w-32 h-32 rounded-full border border-vienna-gold/10 blur-[2px]" />
+        </div>
+
         {/* The Bulb Housing */}
         <div className="w-6 h-4 md:w-8 md:h-5 bg-secession-black border border-vienna-gold/30 rounded-t-full relative z-10 flex justify-center">
              {/* The glowing bulb */}
@@ -593,7 +712,7 @@ const App: React.FC = () => {
   const [selectedRecordingId, setSelectedRecordingId] = useState<string | null>(null);
   const [selectedAwardId, setSelectedAwardId] = useState<string | null>(null);
   const [selectedConcertId, setSelectedConcertId] = useState<string | null>(null);
-  const [fullscreenImage, setFullscreenImage] = useState<string | null>(null);
+  const [fullscreenImage, setFullscreenImage] = useState<{src: string, caption?: string} | null>(null);
   const [activeSection, setActiveSection] = useState('home');
   const [isScrolled, setIsScrolled] = useState(false);
   const [formStatus, setFormStatus] = useState<'idle' | 'submitting' | 'success'>('idle');
@@ -882,10 +1001,10 @@ const App: React.FC = () => {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1, delay: 0.4 }}
-                className="text-[3.5rem] leading-[0.9] sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-serif text-secession-black"
+                className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl leading-[1.1] font-serif text-secession-black mt-2"
               >
-                Bernadette <br/>
-                <span className="italic font-light">König</span>
+                {t.hero.title1} <br/>
+                <span className="italic font-light">{t.hero.title2}</span>
               </motion.h1>
 
               <motion.p
@@ -917,16 +1036,15 @@ const App: React.FC = () => {
               transition={{ duration: 1.5, delay: 0.6, ease: "easeOut" }}
               className="relative w-full h-[65vh] sm:h-[60vh] md:h-[70vh] lg:h-[85vh] mt-6 lg:mt-0 max-w-lg sm:max-w-xl mx-auto lg:max-w-none lg:col-span-7"
             >
-              <div className="absolute inset-0 bg-cream rounded-t-[140px] sm:rounded-t-[200px] lg:rounded-t-[300px] overflow-hidden cursor-pointer" onClick={() => setFullscreenImage("/media/berni1.png")}>
+              <div className="absolute inset-0 bg-cream rounded-t-[140px] sm:rounded-t-[200px] lg:rounded-t-[300px] overflow-hidden cursor-pointer" onClick={() => setFullscreenImage({ src: "/media/berni1.png", caption: t.biography.caption1 })}>
                 <motion.img 
                   src="/media/berni1.png" 
                   alt="Bernadette König playing cello" 
-                  initial={isMobile ? { filter: "grayscale(100%)", opacity: 0.8 } : false}
-                  whileInView={isMobile ? { filter: "grayscale(0%)", opacity: 1 } : false}
-                  whileHover={!isMobile ? { filter: "grayscale(0%)", opacity: 1 } : false}
-                  viewport={{ once: false, amount: 0.4 }}
+                  initial={{ opacity: 0.8 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true, margin: "-50px" }}
                   transition={{ duration: 1 }}
-                  className={`w-full h-full object-cover object-[center_20%] lg:object-center transition-all duration-1000 ${!isMobile ? 'opacity-80 grayscale hover:grayscale-0 hover:opacity-100' : ''}`}
+                  className={`w-full h-full object-cover object-[center_20%] lg:object-center transition-all duration-1000 md:opacity-80 md:grayscale md:hover:grayscale-0 md:hover:opacity-100`}
                 />
               </div>
               {/* Decorative border */}
@@ -966,16 +1084,15 @@ const App: React.FC = () => {
                 transition={{ duration: 1 }}
                 className="lg:col-span-5 relative"
               >
-                <div className="aspect-[4/5] lg:aspect-[3/4] overflow-hidden border-4 lg:border-8 border-vienna-gold/30 shadow-2xl relative z-10 max-w-md mx-auto lg:max-w-none cursor-pointer" onClick={() => setFullscreenImage("/media/berni2.png")}>
+                <div className="aspect-[4/5] lg:aspect-[3/4] overflow-hidden border-4 lg:border-8 border-vienna-gold/30 shadow-2xl relative z-10 max-w-md mx-auto lg:max-w-none cursor-pointer" onClick={() => setFullscreenImage({ src: "/media/berni2.png", caption: t.biography.caption2 })}>
                   <motion.img 
                     src="/media/berni2.png" 
                     alt="Cello details" 
-                    initial={isMobile ? { filter: "grayscale(100%)" } : false}
-                    whileInView={isMobile ? { filter: "grayscale(0%)" } : false}
-                    whileHover={!isMobile ? { filter: "grayscale(0%)" } : false}
-                    viewport={{ once: false, amount: 0.4 }}
+                    initial={{ opacity: 0.8 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true, margin: "-50px" }}
                     transition={{ duration: 1 }}
-                    className={`w-full h-full object-cover transition-all duration-700 ${!isMobile ? 'grayscale hover:grayscale-0' : ''}`}
+                    className={`w-full h-full object-cover transition-all duration-700 md:grayscale md:hover:grayscale-0`}
                   />
                 </div>
               </motion.div>
@@ -1360,7 +1477,7 @@ const App: React.FC = () => {
                   {rec.gallery && rec.gallery.length > 0 && (
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                       {rec.gallery.map((img, idx) => (
-                        <div key={idx} className="aspect-square overflow-hidden border-4 border-cream shadow-xl cursor-pointer" onClick={() => setFullscreenImage(img)}>
+                        <div key={idx} className="aspect-square overflow-hidden border-4 border-cream shadow-xl cursor-pointer" onClick={() => setFullscreenImage({ src: img })}>
                           <img src={img} alt={`${rec.title} gallery ${idx + 1}`} referrerPolicy="no-referrer" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700 grayscale hover:grayscale-0" />
                         </div>
                       ))}
@@ -1548,12 +1665,26 @@ const App: React.FC = () => {
                 </div>
               </div>
               
-              <img 
-                src={fullscreenImage} 
-                alt="Fullscreen view"
-                referrerPolicy="no-referrer"
-                className="max-w-full max-h-[85vh] object-contain relative z-0 shadow-2xl"
-              />
+              <div className="flex flex-col items-center max-w-full max-h-[85vh] relative z-0">
+                <img 
+                  src={fullscreenImage.src} 
+                  alt="Fullscreen view"
+                  referrerPolicy="no-referrer"
+                  className="max-w-full max-h-[75vh] object-contain shadow-2xl relative z-20"
+                />
+                {fullscreenImage.caption && (
+                  <motion.div 
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.2 }}
+                    className="mt-6 md:mt-8 text-center max-w-2xl px-4 relative z-20 bg-cream/80 backdrop-blur-sm p-4 rounded-lg shadow-sm border border-vienna-gold/20"
+                  >
+                    <p className="text-secession-black font-serif italic text-base md:text-lg">
+                      {fullscreenImage.caption}
+                    </p>
+                  </motion.div>
+                )}
+              </div>
             </motion.div>
           </motion.div>
         )}
