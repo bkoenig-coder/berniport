@@ -40,8 +40,11 @@ export const translations = {
       subtitle: 'Anerkennung und Preise bei internationalen Wettbewerben.'
     },
     recordings: {
-      title: 'Eine Auswahl aktueller Aufnahmen und Interpretationen.',
+      title: 'Aufnahmen',
+      subtitle: 'Eine Auswahl aktueller Aufnahmen und Interpretationen.',
       listenSpotify: 'Auf Spotify anhören',
+      watchYoutube: 'Auf YouTube ansehen',
+      watchVideo: 'Video ansehen',
       details: 'Details'
     },
     calendar: {
@@ -92,7 +95,8 @@ export const translations = {
       section4Text: 'Ihnen stehen grundsätzlich die Rechte auf Auskunft, Berichtigung, Löschung, Einschränkung, Datenübertragbarkeit, Widerruf und Widerspruch zu. Wenn Sie glauben, dass die Verarbeitung Ihrer Daten gegen das Datenschutzrecht verstößt oder Ihre datenschutzrechtlichen Ansprüche sonst in einer Weise verletzt worden sind, können Sie sich bei der Aufsichtsbehörde beschweren. In Österreich ist dies die Datenschutzbehörde.'
     },
     footer: {
-      management: 'Für allgemeine Anfragen, Meisterkurse und Pressematerialien kontaktieren Sie bitte das Management.',
+      management: 'Diese Website wird von ihrem Ehemann Margad-Erdene Ganbold verwaltet. Für allgemeine Anfragen, Meisterkurse und Pressematerialien kontaktieren Sie bitte das Management.',
+      managementRole: 'Website-Management',
       rights: 'Alle Rechte vorbehalten.'
     }
   },
@@ -135,8 +139,11 @@ export const translations = {
       subtitle: 'Recognition and prizes at international competitions.'
     },
     recordings: {
-      title: 'A selection of recent recordings and interpretations.',
+      title: 'Recordings',
+      subtitle: 'A selection of recent recordings and interpretations.',
       listenSpotify: 'Listen on Spotify',
+      watchYoutube: 'Watch on YouTube',
+      watchVideo: 'Watch Video',
       details: 'Details'
     },
     calendar: {
@@ -187,7 +194,8 @@ export const translations = {
       section4Text: 'In principle, you have the rights to information, correction, deletion, restriction, data portability, revocation and objection. If you believe that the processing of your data violates data protection law or your data protection claims have otherwise been violated in any way, you can complain to the supervisory authority. In Austria, this is the data protection authority.'
     },
     footer: {
-      management: 'For general inquiries, masterclasses, and press materials, please contact management.',
+      management: 'This website is managed by her husband, Margad-Erdene Ganbold. For general inquiries, masterclasses, and press materials, please contact management.',
+      managementRole: 'Website Management',
       rights: 'All rights reserved.'
     }
   }

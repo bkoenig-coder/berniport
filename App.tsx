@@ -221,55 +221,57 @@ const CONCERTS = [
 
 const RECORDINGS = [
   {
-    id: '1',
-    title: 'Schumann: Adagio and Allegro',
+    id: 'schumann',
+    title: 'R. Schumann: Adagio und Allegro As-Dur Op. 70',
+    titleEn: 'R. Schumann: Adagio and Allegro in A-flat Major, Op. 70',
     year: '2024',
-    label: 'Independent',
-    image: 'https://images.unsplash.com/photo-1690278813437-9aeb9a219d02?q=80&w=707&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    youtubeId: 'gM-T-1T0tEU',
-    description: 'A deeply personal interpretation of Schumann\'s Adagio and Allegro in A flat Major, op. 70.',
+    label: 'Live-Aufnahme',
+    labelEn: 'Live Recording',
+    image: '/media/schumann_max.jpg',
+    youtubeId: 'uDpQrET_JAE',
+    youtubeUrl: 'https://youtu.be/uDpQrET_JAE?is=Gt4lbBP4uUMd5hRa',
+    description: 'Eine feinfühlige und ausdrucksstarke Interpretation von Robert Schumanns poetischem Meisterwerk „Adagio und Allegro“ As-Dur Op. 70 für Violoncello und Klavier.',
+    descriptionEn: 'A poignant and deeply lyrical performance of Robert Schumann\'s masterpiece "Adagio and Allegro" in A-flat Major, Op. 70 for cello and piano.',
     gallery: [
-      'https://images.unsplash.com/photo-1607590207577-62402264d12c?q=80&w=800&auto=format&fit=crop',
-      'https://images.unsplash.com/photo-1585068249021-3e47340d70f1?q=80&w=800&auto=format&fit=crop'
+      '/media/schumann_max.jpg',
+      '/media/berni2.png',
+      '/media/berni1.png'
     ]
   },
   {
-    id: '2',
-    title: 'Schumann: Piano Quintet',
-    year: '2023',
-    label: 'Independent',
-    image: 'https://images.unsplash.com/photo-1507838153414-b4b713384a76?q=80&w=800&auto=format&fit=crop',
-    youtubeId: '_8yE3E_389E',
-    description: 'Piano Quintet in E flat Major, op. 44. Recorded with an outstanding chamber music ensemble.',
+    id: 'mendelssohn',
+    title: 'F. Mendelssohn Bartholdy: Sonate D-Dur Op. 58',
+    titleEn: 'F. Mendelssohn Bartholdy: Cello Sonata in D Major, Op. 58',
+    year: '2024',
+    label: 'Live-Aufnahme',
+    labelEn: 'Live Recording',
+    image: '/media/mendelssohn_max.jpg',
+    youtubeId: 'cOzBAhD0hww',
+    youtubeUrl: 'https://youtu.be/cOzBAhD0hww?is=GkfMkLiI6_aSuFe7',
+    description: 'Felix Mendelssohn Bartholdys mitreißende Sonate für Violoncello und Klavier Nr. 2 in D-Dur Op. 58 – dargeboten mit meisterhafter Kantabilität und jugendlicher Frische.',
+    descriptionEn: 'Felix Mendelssohn Bartholdy\'s vibrant Sonata for Cello and Piano No. 2 in D Major, Op. 58 – performed with lyrical cantabile and technical brilliance.',
     gallery: [
-      'https://images.unsplash.com/photo-1507838153414-b4b713384a76?q=80&w=800&auto=format&fit=crop',
-      'https://images.unsplash.com/photo-1520523839897-bd0b52f945a0?q=80&w=800&auto=format&fit=crop'
+      '/media/mendelssohn_max.jpg',
+      '/media/berni1.png',
+      '/media/berni2.png'
     ]
   },
   {
-    id: '3',
-    title: 'Bach: Cello Suite No. 1',
-    year: '2022',
-    label: 'Independent',
-    image: 'https://images.unsplash.com/photo-1579624594611-285671c6670a?q=80&w=800&auto=format&fit=crop',
-    youtubeId: '1prweT95Mo0',
-    description: 'A timeless performance of J.S. Bach\'s Cello Suite No. 1 in G Major, BWV 1007.',
+    id: 'elgar',
+    title: 'E. Elgar: Cellokonzert e-Moll Op. 85 (1. Satz)',
+    titleEn: 'E. Elgar: Cello Concerto in E minor, Op. 85 (1st Mvt.)',
+    year: '2024',
+    label: 'Live-Aufnahme',
+    labelEn: 'Live Recording',
+    image: '/media/elgar_max.jpg',
+    youtubeId: 'VFxAwbPqAk4',
+    youtubeUrl: 'https://youtu.be/VFxAwbPqAk4?is=QqREf4xyZX_G8Igt',
+    description: 'Der ergreifende 1. Satz (Adagio – Moderato) aus Edward Elgars weltberühmtem Cellokonzert in e-Moll Op. 85, geprägt von emotionaler Tiefe und warmer Noblesse.',
+    descriptionEn: 'The poignant first movement (Adagio – Moderato) from Edward Elgar\'s renowned Cello Concerto in E minor, Op. 85, characterized by emotional depth and noble lyricism.',
     gallery: [
-      'https://images.unsplash.com/photo-1579624594611-285671c6670a?q=80&w=800&auto=format&fit=crop',
-      'https://images.unsplash.com/photo-1460036521480-a5bb28121631?q=80&w=800&auto=format&fit=crop'
-    ]
-  },
-  {
-    id: '4',
-    title: 'Brahms: Cello Sonata No. 1',
-    year: '2021',
-    label: 'Independent',
-    image: 'https://images.unsplash.com/photo-1511192336575-5a79af67a629?q=80&w=800&auto=format&fit=crop',
-    youtubeId: 'b9X18A-wJ1g',
-    description: 'Brahms Cello Sonata No. 1 in E minor, Op. 38. A rich and expressive interpretation.',
-    gallery: [
-      'https://images.unsplash.com/photo-1511192336575-5a79af67a629?q=80&w=800&auto=format&fit=crop',
-      'https://images.unsplash.com/photo-1507838153414-b4b713384a76?q=80&w=800&auto=format&fit=crop'
+      '/media/elgar_max.jpg',
+      '/media/berni2.png',
+      '/media/berni1.png'
     ]
   }
 ];
@@ -350,9 +352,14 @@ const Imprint = ({ t }: { t: any }) => (
         
         <div className="my-8">
           <h2 className="text-2xl font-serif font-bold mb-2 text-secession-black">Bernadette König</h2>
-          <p>Kärntner Straße 1</p>
-          <p>1010 Wien</p>
+          <p>Schöpfleuthergasse 25</p>
+          <p>1210 Wien</p>
           <p>Österreich</p>
+        </div>
+
+        <div className="my-8">
+          <h3 className="text-lg font-serif font-bold mb-1 text-secession-black">Website-Management & Betreuung</h3>
+          <p>Margad-Erdene Ganbold</p>
         </div>
 
         <div className="my-8">
@@ -389,7 +396,7 @@ const PrivacyPolicy = ({ t }: { t: any }) => (
         
         <h2 className="text-3xl font-serif mt-12 mb-4 text-secession-black">{t.privacy.section1Title}</h2>
         <p>{t.privacy.section1Text}</p>
-        <p className="pl-4 border-l-2 border-vienna-gold">Bernadette König<br/>Kärntner Straße 1<br/>1010 Wien, Österreich<br/>E-Mail: b.koenig0303@gmail.com</p>
+        <p className="pl-4 border-l-2 border-vienna-gold">Bernadette König<br/>Schöpfleuthergasse 25<br/>1210 Wien, Österreich<br/>E-Mail: b.koenig0303@gmail.com</p>
 
         <h2 className="text-3xl font-serif mt-12 mb-4 text-secession-black">{t.privacy.section2Title}</h2>
         <h3 className="text-xl font-bold mb-2 text-secession-black">{t.privacy.section2Subtitle}</h3>
@@ -1183,50 +1190,63 @@ const App: React.FC = () => {
             <div className="flex flex-col md:flex-row justify-between items-end mb-12 md:mb-20">
               <div>
                 <h2 className="text-4xl md:text-7xl font-serif mb-4 md:mb-6 text-vienna-gold">{t.recordings.title}</h2>
+                <p className="text-secession-black/60 font-bold tracking-[0.2em] uppercase text-xs md:text-sm">
+                  {t.recordings.subtitle}
+                </p>
               </div>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 md:gap-12">
-              {RECORDINGS.map((rec, index) => (
-                <motion.div 
-                  key={rec.id}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-50px" }}
-                  transition={{ duration: 0.8, delay: index * 0.2 }}
-                  className="group cursor-pointer"
-                  onClick={() => {
-                    setSelectedRecordingId(rec.id);
-                    setCurrentPage('recording');
-                    window.scrollTo(0, 0);
-                  }}
-                >
-                  <div className="relative aspect-square overflow-hidden mb-8 border border-cream/10 p-4">
-                    <div className="w-full h-full relative overflow-hidden">
-                      <img 
-                        src={rec.image} 
-                        alt={rec.title} 
-                        referrerPolicy="no-referrer"
-                        className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 grayscale group-hover:grayscale-0"
-                      />
-                      <div className="absolute inset-0 bg-cream/40 group-hover:bg-transparent transition-colors duration-500" />
-                      <div className="absolute inset-0 flex items-center justify-center opacity-100 lg:opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                        <div className="w-16 h-16 lg:w-20 lg:h-20 rounded-full border border-vienna-gold flex items-center justify-center text-vienna-gold backdrop-blur-md bg-cream/50">
-                          <Play className="w-6 h-6 lg:w-8 lg:h-8 ml-1" />
+              {RECORDINGS.map((rec, index) => {
+                const title = lang === 'en' && rec.titleEn ? rec.titleEn : rec.title;
+                const label = lang === 'en' && rec.labelEn ? rec.labelEn : rec.label;
+                const description = lang === 'en' && rec.descriptionEn ? rec.descriptionEn : rec.description;
+
+                return (
+                  <motion.div 
+                    key={rec.id}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-50px" }}
+                    transition={{ duration: 0.8, delay: index * 0.2 }}
+                    className="group cursor-pointer flex flex-col"
+                    onClick={() => {
+                      setSelectedRecordingId(rec.id);
+                      setCurrentPage('recording');
+                      window.scrollTo(0, 0);
+                    }}
+                  >
+                    <div className="relative aspect-video overflow-hidden mb-6 border border-cream/10 p-2 sm:p-3 bg-cream/40 shadow-md group-hover:shadow-xl transition-shadow">
+                      <div className="w-full h-full relative overflow-hidden">
+                        <img 
+                          src={rec.image} 
+                          alt={title} 
+                          referrerPolicy="no-referrer"
+                          className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105 grayscale group-hover:grayscale-0"
+                        />
+                        <div className="absolute inset-0 bg-cream/20 group-hover:bg-transparent transition-colors duration-500" />
+                        <div className="absolute inset-0 flex items-center justify-center opacity-90 lg:opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                          <div className="w-16 h-16 lg:w-20 lg:h-20 rounded-full border-2 border-vienna-gold flex items-center justify-center text-vienna-gold backdrop-blur-md bg-cream/70 shadow-lg group-hover:scale-110 transition-transform">
+                            <Play className="w-6 h-6 lg:w-8 lg:h-8 ml-1 fill-current" />
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                  <div className="flex justify-between items-start mb-3">
-                    <h3 className="text-2xl font-serif text-secession-black">{rec.title}</h3>
-                    <span className="text-vienna-gold text-sm font-bold tracking-widest">{rec.year}</span>
-                  </div>
-                  <p className="text-xs text-imperial-red font-bold uppercase tracking-[0.2em] mb-4">{rec.label}</p>
-                  <p className="text-sm text-secession-black/60 font-medium leading-relaxed">
-                    {rec.description}
-                  </p>
-                </motion.div>
-              ))}
+                    <div className="flex justify-between items-start mb-3">
+                      <h3 className="text-xl sm:text-2xl font-serif text-secession-black group-hover:text-vienna-gold transition-colors leading-snug">{title}</h3>
+                      <span className="text-vienna-gold text-xs sm:text-sm font-bold tracking-widest ml-3 shrink-0">{rec.year}</span>
+                    </div>
+                    <p className="text-xs text-imperial-red font-bold uppercase tracking-[0.2em] mb-4">{label}</p>
+                    <p className="text-sm text-secession-black/70 font-medium leading-relaxed mb-4 flex-1">
+                      {description}
+                    </p>
+                    <div className="inline-flex items-center gap-2 text-xs font-bold tracking-[0.2em] uppercase text-vienna-gold group-hover:text-imperial-red transition-colors pt-3 border-t border-vienna-gold/20">
+                      <span>{t.recordings.watchVideo || 'Video ansehen'}</span>
+                      <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                    </div>
+                  </motion.div>
+                );
+              })}
             </div>
           </div>
         </section>
@@ -1408,31 +1428,43 @@ const App: React.FC = () => {
               onClick={() => { setCurrentPage('home'); setSelectedRecordingId(null); window.scrollTo(0, 0); }}
               className="mb-8 flex items-center gap-2 text-xs font-bold tracking-[0.2em] uppercase text-secession-black hover:text-vienna-gold transition-colors"
             >
-              <ChevronLeft className="w-4 h-4" /> Zurück zur Übersicht
+              <ChevronLeft className="w-4 h-4" /> {lang === 'en' ? 'Back to overview' : 'Zurück zur Übersicht'}
             </button>
             
             {(() => {
               const rec = RECORDINGS.find(r => r.id === selectedRecordingId);
               if (!rec) return null;
+              const title = lang === 'en' && rec.titleEn ? rec.titleEn : rec.title;
+              const label = lang === 'en' && rec.labelEn ? rec.labelEn : rec.label;
+              const description = lang === 'en' && rec.descriptionEn ? rec.descriptionEn : rec.description;
+
               return (
                 <div className="space-y-12">
                   <SecessionFrame className="!p-8 md:!p-16">
                     <div className="text-center max-w-3xl mx-auto">
-                      <span className="text-imperial-red font-bold tracking-widest text-sm uppercase">{rec.year} • {rec.label}</span>
-                      <h1 className="text-4xl md:text-6xl font-serif mt-4 mb-6 text-secession-black italic">{rec.title}</h1>
+                      <span className="text-imperial-red font-bold tracking-widest text-sm uppercase">{rec.year} • {label}</span>
+                      <h1 className="text-3xl md:text-5xl lg:text-6xl font-serif mt-4 mb-6 text-secession-black italic">{title}</h1>
                       <SecessionOrnament className="my-8" />
-                      <p className="text-secession-black/80 font-medium text-lg leading-relaxed">
-                        {rec.description}
+                      <p className="text-secession-black/80 font-medium text-base md:text-lg leading-relaxed mb-8">
+                        {description}
                       </p>
+                      <a 
+                        href={`https://youtu.be/${rec.youtubeId}`}
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-3 px-8 py-3.5 border-2 border-vienna-gold text-secession-black hover:bg-vienna-gold hover:text-cream transition-all text-xs font-bold tracking-[0.2em] uppercase shadow-sm hover:shadow-md"
+                      >
+                        <Play className="w-4 h-4 fill-current text-imperial-red" /> {t.recordings.watchYoutube || 'Auf YouTube ansehen'}
+                      </a>
                     </div>
                   </SecessionFrame>
 
                   {rec.youtubeId && (
-                    <div className="aspect-video w-full bg-cream border-4 border-vienna-gold shadow-2xl relative">
+                    <div className="aspect-video w-full bg-cream border-4 border-vienna-gold shadow-2xl relative overflow-hidden rounded-sm">
                       <iframe 
                         className="absolute inset-0 w-full h-full"
-                        src={`https://www.youtube.com/embed/${rec.youtubeId}`} 
-                        title="YouTube video player" 
+                        src={`https://www.youtube-nocookie.com/embed/${rec.youtubeId}?autoplay=1&rel=0`} 
+                        title={title} 
                         frameBorder="0" 
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                         allowFullScreen
@@ -1441,12 +1473,26 @@ const App: React.FC = () => {
                   )}
 
                   {rec.gallery && rec.gallery.length > 0 && (
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                      {rec.gallery.map((img, idx) => (
-                        <div key={idx} className="aspect-square overflow-hidden border-4 border-cream shadow-xl cursor-pointer" onClick={() => setFullscreenImage({ src: img })}>
-                          <img src={img} alt={`${rec.title} gallery ${idx + 1}`} referrerPolicy="no-referrer" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700 grayscale hover:grayscale-0" />
-                        </div>
-                      ))}
+                    <div className="pt-4">
+                      <h3 className="text-center font-serif text-2xl md:text-3xl text-vienna-gold mb-6 italic">
+                        {lang === 'en' ? 'Photo Impressions' : 'Impressionen'}
+                      </h3>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                        {rec.gallery.map((img, idx) => (
+                          <div 
+                            key={idx} 
+                            className="aspect-square overflow-hidden border-4 border-cream shadow-xl cursor-pointer bg-cream/20 group" 
+                            onClick={() => setFullscreenImage({ src: img, caption: title })}
+                          >
+                            <img 
+                              src={img} 
+                              alt={`${title} gallery ${idx + 1}`} 
+                              referrerPolicy="no-referrer" 
+                              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 grayscale group-hover:grayscale-0" 
+                            />
+                          </div>
+                        ))}
+                      </div>
                     </div>
                   )}
                 </div>
@@ -1464,7 +1510,7 @@ const App: React.FC = () => {
               Bernadette König
             </div>
             <p className="text-secession-black/70 font-medium max-w-sm leading-relaxed mb-8 text-sm md:text-base">
-              Für allgemeine Anfragen, Meisterkurse und Pressematerialien kontaktieren Sie bitte das Management.
+              {t.footer.management}
             </p>
           </div>
           
@@ -1472,7 +1518,10 @@ const App: React.FC = () => {
             <h4 className="text-imperial-red text-xs font-bold tracking-[0.2em] uppercase mb-8">Management</h4>
             <ul className="space-y-4 text-secession-black/80 font-medium text-sm">
               <li>
-                <strong className="text-secession-black block mb-1">Bernadette König</strong>
+                <strong className="text-secession-black block mb-1">Margad-Erdene Ganbold</strong>
+                <span className="text-xs text-secession-black/60 block mb-1">
+                  {lang === 'en' ? 'Website Management' : 'Website-Management'}
+                </span>
                 Wien, Österreich
               </li>
               <li>
